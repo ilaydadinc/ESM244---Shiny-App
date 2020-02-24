@@ -19,7 +19,7 @@ restaurant<-read_csv("j_tacos_burritos.csv")
 #Create 'ui' = "User Interface"
 
 ui <- navbarPage("Maddie's nav bar",
-                 theme = shinytheme("cyborg"),
+                 theme = shinytheme("united"),
                  tabPanel("Summary",
                           h1("Some giant text"),
                           p("Here's some regular text..."),
