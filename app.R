@@ -16,7 +16,6 @@ veggies<-read_csv("veggies.csv")
 
 restaurant<-read_csv("j_tacos_burritos.csv")
 
-
 #Create 'ui' = "User Interface"
 
 ui <- navbarPage("Maddie's nav bar",
@@ -31,6 +30,20 @@ ui <- navbarPage("Maddie's nav bar",
                                          h1("Meat"),
                                          sliderInput(inputId = "chicken", #change widget here
                                                      label = "Chicken",
+                                                     min = 0,
+                                                     max = 50,
+                                                     0,
+                                                     step = 10,
+                                                     ticks = FALSE),
+                                         sliderInput(inputId = "beef", #change widget here
+                                                     label = "Beef",
+                                                     min = 0,
+                                                     max = 50,
+                                                     0,
+                                                     step = 10,
+                                                     ticks = FALSE),
+                                         sliderInput(inputId = "pork", #change widget here
+                                                     label = "Pork",
                                                      min = 0,
                                                      max = 50,
                                                      0,
