@@ -16,6 +16,7 @@ veggies<-read_csv("veggies.csv")
 
 restaurant<-read_csv("j_tacos_burritos.csv")
 
+
 #Create 'ui' = "User Interface"
 
 ui <- navbarPage("Maddie's nav bar",
@@ -23,7 +24,7 @@ ui <- navbarPage("Maddie's nav bar",
                  tabPanel("Summary",
                           h1("Some giant text"),
                           p("Here's some regular text..."),
-                          img(src="image.jpg", height="100%",width="100%"),
+                          img(src="image.jpg", height="100%",width="100%")),
                  tabPanel("Burrito Builder!",
                           sidebarLayout(
                             sidebarPanel("Burrito Builder and Emissions Calculator",
