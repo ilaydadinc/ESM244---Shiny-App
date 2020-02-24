@@ -16,13 +16,14 @@ veggies<-read_csv("veggies.csv")
 
 restaurant<-read_csv("j_tacos_burritos.csv")
 
+
 #Create 'ui' = "User Interface"
 
 ui <- navbarPage("Maddie's nav bar",
                  theme = shinytheme("united"),
                  tabPanel("Summary",
                           h1("Some giant text"),
-                          p("Here's some regular text..."),
+                          p("The word 'burrito' means 'little donkey' in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot"),
                           img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;')),
                  tabPanel("Burrito Builder!",
                           sidebarLayout(
@@ -30,20 +31,6 @@ ui <- navbarPage("Maddie's nav bar",
                                          h1("Meat"),
                                          sliderInput(inputId = "chicken", #change widget here
                                                      label = "Chicken",
-                                                     min = 0,
-                                                     max = 50,
-                                                     0,
-                                                     step = 10,
-                                                     ticks = FALSE),
-                                         sliderInput(inputId = "beef", #change widget here
-                                                     label = "Beef",
-                                                     min = 0,
-                                                     max = 50,
-                                                     0,
-                                                     step = 10,
-                                                     ticks = FALSE),
-                                         sliderInput(inputId = "pork", #change widget here
-                                                     label = "Pork",
                                                      min = 0,
                                                      max = 50,
                                                      0,
