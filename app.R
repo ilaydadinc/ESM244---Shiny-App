@@ -27,15 +27,20 @@ ui <- navbarPage("Maddie's nav bar",
                           img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;')),
                  tabPanel("Burrito Builder!",
                           sidebarLayout(
-                            sidebarPanel("Burrito Builder and Emissions Calculator",
-                                         checkboxGroupInput(inputId = "diamondclarity", #change widget here
-                                                            label = "Choose some!",
-                                                            choices = c(levels(diamonds$clarity)))),
+                            sidebarPanel("Choose your ingredients",
+                                         h1("Meat"),
+                                         sliderInput(inputId = "chicken", #change widget here
+                                                     label = "Chicken",
+                                                     min = 0,
+                                                     max = 50,
+                                                     0,
+                                                     step = 10,
+                                                     ticks = FALSE)),
                             mainPanel("Main panel text",
                                       plotOutput(outputId = "diamond_plot_2")) #output
                           )),
                  tabPanel("Offset Calculator"),
-                 tabPanel("Burrito Map")
+                 tabPanel("Get your burrito")
                  
                           
                           
