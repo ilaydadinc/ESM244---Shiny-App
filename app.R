@@ -10,7 +10,7 @@ library(shinydashboard)
 
 #Read in the data
 
-meat_diary<- read_csv("Environment_Emission_intensities_E_All_Data_NOFLAG.csv")
+meat_diary<- read_csv("meat.csv")
 
 veggies<-read_csv("veggies.csv")
 
