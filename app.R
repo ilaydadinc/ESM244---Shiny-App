@@ -23,7 +23,7 @@ ui <- navbarPage("Maddie's nav bar",
                  tabPanel("Summary",
                           h1("Some giant text"),
                           p("Here's some regular text..."),
-                          plotOutput(outputId = "diamond_plot")),
+                          img(src="image.jpg", height="100%",width="100%"),
                  tabPanel("Burrito Builder!",
                           sidebarLayout(
                             sidebarPanel("Burrito Builder and Emissions Calculator",
