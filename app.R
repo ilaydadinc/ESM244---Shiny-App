@@ -6,10 +6,13 @@ library(shiny)
 library(tidyverse)
 library(here)
 library(shinythemes)
+library(shinydashboard)
 
 #Read in the data
 
+meat_diary<- read_csv("Environment_Emission_intensities_E_All_Data_NOFLAG.csv")
 
+veggies<-read_csv("veggies.csv")
 
 #Create 'ui' = "User Interface"
 
