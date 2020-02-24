@@ -24,7 +24,7 @@ ui <- navbarPage("Maddie's nav bar",
                  tabPanel("Summary",
                           h1("Some giant text"),
                           p("Here's some regular text..."),
-                          img(src="image.jpg", height="100%",width="100%")),
+                          img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;')),
                  tabPanel("Burrito Builder!",
                           sidebarLayout(
                             sidebarPanel("Burrito Builder and Emissions Calculator",
