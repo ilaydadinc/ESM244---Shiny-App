@@ -16,6 +16,7 @@ veggies<-read_csv("veggies.csv")
 
 restaurant<-read_csv("j_tacos_burritos.csv")
 
+
 #Create 'ui' = "User Interface"
 
 ui <- navbarPage("Maddie's nav bar",
