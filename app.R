@@ -26,9 +26,10 @@ restaurant<-read_csv("j_tacos_burritos.csv")
 
 #Create 'ui' = "User Interface"
 
-ui <- navbarPage("Maddie's nav bar",
+ui <- navbarPage("Guilt-free Burritos",
+               
                  theme = shinytheme("united"),
-                 tabPanel("HOME",
+                 tabPanel("Home",
                           h1("BURRITO BUILDER", style = "font-size:40px",align="center"),
                           p("The word 'burrito' means 'little donkey' in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:18px",align="center"),
                           img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;'),
