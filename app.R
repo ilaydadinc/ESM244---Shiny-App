@@ -56,7 +56,7 @@ ui <- navbarPage("Maddie's nav bar",
                             column(2),
                             column(8,
                                    shiny::HTML("<br><br><center> <h1>How does it work?</h1> </center><br>"),
-                                   shiny::HTML("<h5> In the emissions calculator tab, you will be able to calculate your greenhouse gas emissions according to the your choices.Then, if you keep exploring our app and you will see how you can offset these emissions by making small changes to your life choices.</h5>")
+                                   shiny::HTML("<h5> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions according to the your choices.Then, if you keep exploring our app and you will see how you can offset these emissions by making small changes to your life choices in the 'Offset Calculator'tab.</h5>")
                             ),
                             column(2)
                           ),
