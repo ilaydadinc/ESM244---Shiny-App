@@ -38,14 +38,14 @@ ui <- navbarPage("Guilt-free Burritos",
                           fluidRow(
                             column(2),
                             column(8,
-                                   shiny::HTML("<h5>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? This app is here to help you to build your burrito and see your environmental impact in the form of greenhouse gas emissions.</h5>")
+                                   shiny::HTML("<center><h5>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? This app is here to help you to build your burrito and see your environmental impact in the form of greenhouse gas emissions.</h5></center>")
                             ),
                             column(2)
                             ),
                           
                           fluidRow(
                             
-                            style = "height:50px;"),
+                            style = "height:10px;"),
                           
                           # PAGE BREAK
                           tags$hr(),
@@ -57,7 +57,7 @@ ui <- navbarPage("Guilt-free Burritos",
                             column(2),
                             column(8,
                                    shiny::HTML("<br><br><center> <h1>How does it work?</h1> </center><br>"),
-                                   shiny::HTML("<h5> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions according to the your choices.Then, if you keep exploring our app and you will see how you can offset these emissions by making small changes to your life choices in the 'Offset Calculator'tab.</h5>")
+                                   shiny::HTML("<center><h5> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions according to the your choices.Then, if you keep exploring our app and you will see how you can offset these emissions by making small changes to your life choices in the 'Offset Calculator'tab.</h5></center>")
                             ),
                             column(2)
                           ),
