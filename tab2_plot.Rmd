@@ -47,6 +47,19 @@ veggie_clean <- veggie_raw %>%
   select(ingredient, emission_factor)
 
 ingredient_clean <- rbind(meat_clean, veggie_clean)
+
+col_names <- ingredient_clean$ingredient
+
+#Transpose the dataframe
+ingredient_value <- ingredient_clean %>% 
+  select(emission_factor)
+
+ingredient_final <- as.data.frame(t(ingredient_value))
+
+names(ingredient_final)<-col_names
+
+ingredient_final <- ingredient_final %>% 
+  clean_names()
 ```
 
 

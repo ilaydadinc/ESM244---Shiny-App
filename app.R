@@ -14,14 +14,9 @@ library(rintrojs)
 library(stringr)
 library(png)
 library(dplyr)
+library(janitor)
 
-#Read in the data here
 
-meat_diary<- read_csv("meat.csv")
-
-veggies<-read_csv("veggies.csv")
-
-restaurant<-read_csv("j_tacos_burritos.csv")
 
 
 #Create 'ui' = "User Interface"
@@ -96,58 +91,65 @@ ui <- navbarPage("Guilt-free Burritos",
                             sidebarPanel("Choose your ingredients",
                                          h1("Meat"),
                                          sliderInput(inputId = "chicken", #change widget here
-                                                     label = "Chicken",
+                                                     label = "Chicken (grams)",
                                                      min = 0,
-                                                     max = 50,
+                                                     max = 200,
                                                      0,
                                                      step = 10,
                                                      ticks = FALSE),
                                          sliderInput(inputId = "beef", #change widget here
-                                                     label = "Beef",
+                                                     label = "Beef (grams)",
                                                      min = 0,
-                                                     max = 50,
+                                                     max = 200,
                                                      0,
                                                      step = 10,
                                                      ticks = FALSE),
                                          sliderInput(inputId = "pork", #change widget here
-                                                     label = "Pork",
+                                                     label = "Pork (grams)",
                                                      min = 0,
-                                                     max = 50,
+                                                     max = 200,
+                                                     0,
+                                                     step = 10,
+                                                     ticks = FALSE),
+                                         sliderInput(inputId = "fish", #change widget here
+                                                     label = "Fish (grams)",
+                                                     min = 0,
+                                                     max = 200,
                                                      0,
                                                      step = 10,
                                                      ticks = FALSE),
                                          sliderInput(inputId = "vegetables", #change widget here
-                                                     label = "Veggies",
+                                                     label = "Veggies (grams)",
                                                      min = 0,
-                                                     max = 10,
+                                                     max = 200,
                                                      0,
                                                      step = 1,
                                                      ticks = FALSE),
                                          h1("Toppings"),
                                          sliderInput(inputId = "rice", #change widget here
-                                                     label = "Rice",
+                                                     label = "Rice (grams)",
                                                      min = 0,
-                                                     max = 50,
+                                                     max = 200,
                                                      0,
                                                      step = 10,
                                                      ticks = FALSE),
                                          sliderInput(inputId = "cheese", #change widget here
-                                                     label = "Cheese",
+                                                     label = "Cheese (grams)",
                                                      min = 0,
-                                                     max = 10,
+                                                     max = 200,
                                                      0,
                                                      step = 1,
                                                      ticks = FALSE),
                                          sliderInput(inputId = "salsa", #change widget here
-                                                     label = "Salsa",
+                                                     label = "Salsa (grams)",
                                                      min = 0,
-                                                     max = 10,
+                                                     max = 200,
                                                      0,
                                                      step = 1,
                                                      ticks = FALSE)
                                          ),
                             mainPanel("Main panel text",
-                                      plotOutput(outputId = "diamond_plot_2")) #output
+                                      plotOutput(outputId = "emission_contri")) #output
                           )),
                  tabPanel("Offset Calculator"),
                  tabPanel("Get your burrito")
@@ -156,10 +158,80 @@ ui <- navbarPage("Guilt-free Burritos",
                           
 )
 
+#Read in the data here
+
+veggie_raw<-read_csv("veggies.csv")
+meat_raw<-read_csv("meat.csv")
+#restaurant<-read_csv("j_tacos_burritos.csv")
+
+#Data manipulation
+cheese_percent <- 0.249
+cheese_cf_kg<- 0.1/cheese_percent #ef/cheese_cf_kg => ef(kg CO2e/kg) 
+fish_percent <- 0.17 #cod, http://www.fao.org/3/x5916e01.htm
+fish_cf_kg <- 0.1/fish_percent
+bread_percent <- 3.6/28 #usda
+bread_cf_kg <- 0.1/bread_percent
+
+meat_clean <- meat_raw %>% 
+  clean_names() %>% 
+  select(area, item, unit, y2003) %>% 
+  filter(area == "United States of America") %>% 
+  filter(unit == "kg CO2eq/kg product") %>% 
+  rename(emission_factor = y2003) %>% 
+  rename(ingredient = item) %>% 
+  select(ingredient, emission_factor)
+
+veggie_clean <- veggie_raw %>% 
+  clean_names() %>% 
+  filter(product %in% c("Wheat & Rye (Bread)", "Tomatoes", "Onions & Leeks", "Other Vegetables", "Cheese", "Fish (farmed)")) %>%
+  mutate(emission_factor = case_when(
+    product == "Wheat & Rye (Bread)" ~ median/bread_cf_kg,
+    product == "Cheese" ~ median/cheese_cf_kg,
+    product == "Fish (farmed)" ~ median/fish_cf_kg,
+    TRUE ~ median
+  )) %>% 
+  rename(ingredient = product) %>% 
+  select(ingredient, emission_factor)
+
+ingredient_clean <- rbind(meat_clean, veggie_clean)
+
+col_names <- ingredient_clean$ingredient
+
+#Transpose the dataframe
+ingredient_value <- ingredient_clean %>% 
+  select(emission_factor)
+
+ingredient_final <- as.data.frame(t(ingredient_value))
+
+names(ingredient_final)<-col_names
+
+ingredient_final <- ingredient_final %>% 
+  clean_names()
+
+
 
 #Create a 'server'
 
 server <- function(input, output){
+  
+  output$emission_contri <- renderPlot({
+    
+    plot_data <- data.frame(ingredient = c("chicken", "beef", "pork", "fish", "vegetables", "rice", "cheese", "salsa", "bread"),
+                       emission = c(input$chicken*ingredient_final$meat_chicken, 
+                                    input$beef*ingredient_final$meat_cattle,
+                                    input$pork*ingredient_final$meat_pig,
+                                    input$fish*ingredient_final$fish_farmed,
+                                    input$vegetables*ingredient_final$other_vegetables,
+                                    input$rice*ingredient_final$rice_paddy,
+                                    input$cheese*ingredient_final$cheese,
+                                    (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks),
+                                    100 * ingredient_final$wheat_rye_bread
+                       ))
+    
+    ggplot(data = plot_data, aes(x = ingredient, y = emission))+
+      geom_bar(aes(fill = ingredient), stat="identity")
+  })
+  
   #first tab
   output$diamond_plot <- renderPlot({
     
@@ -175,10 +247,7 @@ server <- function(input, output){
   })
   
   #outout for secondtab
-  output$diamond_plot_2 <- renderPlot({
-    ggplot(data = diamond_clarity(), aes(x = clarity, y = price))+
-      geom_violin(aes(fill = clarity))
-  })
+  
   
 }
 
