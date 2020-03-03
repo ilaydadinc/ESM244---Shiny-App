@@ -51,7 +51,7 @@ ui <- navbarPage("Guilt-free Burritos",
                           tags$hr(),
                           
                           
-                          
+                        
                           # WHERE
                           fluidRow(
                             column(2),
