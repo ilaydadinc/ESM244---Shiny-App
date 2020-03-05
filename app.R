@@ -22,7 +22,6 @@ library(janitor)
 #Create 'ui' = "User Interface"
 
 ui <- navbarPage("Guilt-free Burritos",
-               
                  theme = shinytheme("united"),
                  tabPanel("Home",
                           h1("BURRITO BUILDER", style = "font-size:40px",align="center"),
@@ -37,16 +36,11 @@ ui <- navbarPage("Guilt-free Burritos",
                             ),
                             column(2)
                             ),
-                          
                           fluidRow(
-                            
-                            style = "height:10px;"),
-                          
+                            style = "height:10px;"
+                            ),
                           # PAGE BREAK
                           tags$hr(),
-                          
-                          
-                        
                           # WHERE
                           fluidRow(
                             column(2),
@@ -56,11 +50,8 @@ ui <- navbarPage("Guilt-free Burritos",
                             ),
                             column(2)
                           ),
-                          
                           fluidRow(
-                            
                             style = "height:50px;"),
-                          
                           # PAGE BREAK
                           tags$hr(),
                           # HOW
@@ -69,20 +60,14 @@ ui <- navbarPage("Guilt-free Burritos",
                             column(8,
                                    shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? Don’t worry we got you!
 
-</h1> </center><br>"),
-                                   
+</h1> </center><br>")
                             ),
                             column(2)
                           ),
-                          
                           fluidRow(
-                            
                             style = "height:50px;"),
-                          
                           # PAGE BREAK
                           tags$hr()
-                          
-                          
                  ), # Closes the first tabPanel called "Home"
                  
       
