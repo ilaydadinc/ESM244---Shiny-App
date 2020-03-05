@@ -80,7 +80,7 @@ ui <- navbarPage("Guilt-free Burritos",
                             style = "height:50px;"),
                           
                           # PAGE BREAK
-                          tags$hr(),
+                          tags$hr()
                           
                           
                  ), # Closes the first tabPanel called "Home"
