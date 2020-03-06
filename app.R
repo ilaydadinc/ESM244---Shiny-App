@@ -142,12 +142,12 @@ ui <- navbarPage("Guilt-free Burritos",
                  tabPanel("Get your burrito",
                           sidebarLayout(
                             sidebarPanel("Nearby burritos",
-                                         numericInput("postalcode",
+                                         textInput("postalcode",
                                                       label = "Enter your zipcode",
-                                                      value = 93117
+                                                      value = "e.g. 93117"
                                          )),
                             mainPanel("Map",
-                                      leafletOutput("local_burritos"))
+                                      leafletOutput("burr_map"))
                           ))
                  
                           
@@ -228,10 +228,7 @@ burritos <- read_csv("tacos_burritos.csv") %>%
          name, 
          postalCode) %>% 
   clean_names() %>% 
-  filter(latitude != "NA" | longitude != "NA") %>% 
-  mutate(
-    postal_code = as.numeric(postal_code)
-  )
+  filter(latitude != "NA" | longitude != "NA")
 
 
 #note: we may have to filter out the messy zipcodes too
