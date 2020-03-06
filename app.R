@@ -16,6 +16,7 @@ library(png)
 library(dplyr)
 library(janitor)
 library(leaflet)
+library(shinyWidgets)
 
 
 
@@ -74,8 +75,8 @@ ui <- navbarPage("Guilt-free Burritos",
       
                  tabPanel("Burrito Builder!",
                           sidebarLayout(
-                            sidebarPanel("Choose your ingredients",
-                                         h1("Start with a base"),
+                            sidebarPanel(h1("Choose your ingredients"),
+                                         "Start with a base",
                                          sliderInput(inputId = "chicken", #change widget here
                                                      label = "Chicken (grams)",
                                                      min = 0,
@@ -138,7 +139,16 @@ ui <- navbarPage("Guilt-free Burritos",
                                       plotOutput(outputId = "emission_contri")) #output
                           )),
                  tabPanel("Offset Calculator"),
-                 tabPanel("Get your burrito")
+                 tabPanel("Get your burrito",
+                          sidebarLayout(
+                            sidebarPanel("Nearby burritos",
+                                         numericInput("postalcode",
+                                                      label = "Enter your zipcode",
+                                                      value = 93117
+                                         )),
+                            mainPanel("Map",
+                                      leafletOutput("local_burritos"))
+                          ))
                  
                           
                           
@@ -218,15 +228,20 @@ burritos <- read_csv("tacos_burritos.csv") %>%
          name, 
          postalCode) %>% 
   clean_names() %>% 
-  filter(latitude != "NA" | longitude != "NA")
+  filter(latitude != "NA" | longitude != "NA") %>% 
+  mutate(
+    postal_code = as.numeric(postal_code)
+  )
 
+
+#note: we may have to filter out the messy zipcodes too
 
 #######################
 
 #Create a 'server'
 
 server <- function(input, output){
-  
+  ### TAB 2 ###
   #output for burrito builder
   output$emission_contri <- renderPlot({
     
@@ -245,7 +260,7 @@ server <- function(input, output){
     ggplot(data = plot_data, aes(x = ingredient, y = emission))+
       geom_bar(aes(fill = ingredient), stat="identity")
   })
-  
+  ### TAB 3 ###
   #output for offset calculator
   output$diamond_plot <- renderPlot({
     
@@ -253,25 +268,24 @@ server <- function(input, output){
       geom_point(aes(color = clarity))
     
   })
-  
+  ### TAB 4 ###
   #reactive df for burrito map
   local_burritos <- reactive({
-    burritos %>% 
-      filter(postal_code %in% input$postalcode)
+    burritos %>%
+      filter(postal_code == input$postalcode)
   })
   
   #output for burrito map
   
   output$burr_map <-renderLeaflet({
-    leaflet(local_burritos) %>% 
-    addCircles(lng = ~longitude, lat = ~latitude) %>% 
-    addTiles() %>% 
-    addCircleMarkers(data = local_burritos, 
-                     lat = ~latitude, 
-                     lng= ~longitude, 
+    leaflet(local_burritos) %>%
+    addCircles(lng = ~longitude, lat = ~latitude) %>%
+    addTiles() %>%
+    addCircleMarkers(data = local_burritos,
+                     lat = ~latitude,
+                     lng= ~longitude,
                      radius =3,
                      fillOpacity = 0.8)})
-  
   
   
 
