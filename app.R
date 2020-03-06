@@ -203,7 +203,7 @@ ingredient_final <- ingredient_final %>%
 #Data Manipulation - Map 
 
 #read in data and clean
-burritos <- read_csv("just tacos and burritos.csv") %>% 
+burritos <- read_csv("tacos_burritos.csv") %>% 
   filter(str_detect(menus.name, pattern = "Burrito")) %>%  #get rid of the tacos
   filter(!str_detect(categories, pattern = "Fast Food")) %>% #no fast food because we are classy
   select(address, 
@@ -257,16 +257,16 @@ server <- function(input, output){
   #reactive df for burrito map
   local_burritos <- reactive({
     burritos %>% 
-      filter(postalcode %in% input$postalcode)
+      filter(postal_code %in% input$postalcode)
   })
   
   #output for burrito map
   
   output$burr_map <-renderLeaflet({
-    leaflet(burritos) %>% 
+    leaflet(local_burritos) %>% 
     addCircles(lng = ~longitude, lat = ~latitude) %>% 
     addTiles() %>% 
-    addCircleMarkers(data = burritos, 
+    addCircleMarkers(data = local_burritos, 
                      lat = ~latitude, 
                      lng= ~longitude, 
                      radius =3,
@@ -274,7 +274,7 @@ server <- function(input, output){
   
   
   
-  
+
   
 }
 
