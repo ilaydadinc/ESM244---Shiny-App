@@ -154,7 +154,7 @@ meat_raw<-read_csv("meat.csv")
 #restaurant<-read_csv("j_tacos_burritos.csv")
 offset<-read.csv("offset mechanisms.csv")
 
-#Data manipulation
+#Data manipulation - Burrito Builder
 cheese_percent <- 0.249
 cheese_cf_kg<- 0.1/cheese_percent #ef/cheese_cf_kg => ef(kg CO2e/kg) 
 fish_percent <- 0.17 #cod, http://www.fao.org/3/x5916e01.htm
@@ -198,6 +198,29 @@ names(ingredient_final)<-col_names
 ingredient_final <- ingredient_final %>% 
   clean_names()
 
+#########################
+
+#Data Manipulation - Map 
+
+#read in data and clean
+burritos <- read_csv("just tacos and burritos.csv") %>% 
+  filter(str_detect(menus.name, pattern = "Burrito")) %>%  #get rid of the tacos
+  filter(!str_detect(categories, pattern = "Fast Food")) %>% #no fast food because we are classy
+  select(address, 
+         categories, 
+         city, 
+         country, 
+         cuisines, 
+         latitude, 
+         longitude, 
+         menus.description, 
+         menus.name, 
+         name, 
+         postalCode) %>% 
+  clean_names() %>% 
+  filter(latitude != "NA" | longitude != "NA")
+
+
 #######################
 
 #Create a 'server'
@@ -231,13 +254,26 @@ server <- function(input, output){
     
   })
   
-  #reactive df for second tab
-  diamond_clarity <- reactive({
-    diamonds %>% 
-      filter(clarity %in% input$diamondclarity)
+  #reactive df for burrito map
+  local_burritos <- reactive({
+    burritos %>% 
+      filter(postalcode %in% input$postalcode)
   })
   
-  #output for secondtab
+  #output for burrito map
+  
+  output$burr_map <-renderLeaflet({
+    leaflet(burritos) %>% 
+    addCircles(lng = ~longitude, lat = ~latitude) %>% 
+    addTiles() %>% 
+    addCircleMarkers(data = burritos, 
+                     lat = ~latitude, 
+                     lng= ~longitude, 
+                     radius =3,
+                     fillOpacity = 0.8)})
+  
+  
+  
   
   
 }
