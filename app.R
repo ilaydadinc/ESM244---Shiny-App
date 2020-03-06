@@ -15,6 +15,7 @@ library(stringr)
 library(png)
 library(dplyr)
 library(janitor)
+library(leaflet)
 
 
 
@@ -74,7 +75,7 @@ ui <- navbarPage("Guilt-free Burritos",
                  tabPanel("Burrito Builder!",
                           sidebarLayout(
                             sidebarPanel("Choose your ingredients",
-                                         h1("Meat"),
+                                         h1("Start with a base"),
                                          sliderInput(inputId = "chicken", #change widget here
                                                      label = "Chicken (grams)",
                                                      min = 0,
@@ -110,7 +111,7 @@ ui <- navbarPage("Guilt-free Burritos",
                                                      0,
                                                      step = 1,
                                                      ticks = FALSE),
-                                         h1("Toppings"),
+                                         h1("Add more other stuff"),
                                          sliderInput(inputId = "rice", #change widget here
                                                      label = "Rice (grams)",
                                                      min = 0,
@@ -133,7 +134,7 @@ ui <- navbarPage("Guilt-free Burritos",
                                                      step = 1,
                                                      ticks = FALSE)
                                          ),
-                            mainPanel("Main panel text",
+                            mainPanel("Greenhouse Gas Emissions",
                                       plotOutput(outputId = "emission_contri")) #output
                           )),
                  tabPanel("Offset Calculator"),
@@ -142,6 +143,9 @@ ui <- navbarPage("Guilt-free Burritos",
                           
                           
 )
+
+#######################
+
 
 #Read in the data here
 
@@ -194,12 +198,13 @@ names(ingredient_final)<-col_names
 ingredient_final <- ingredient_final %>% 
   clean_names()
 
-
+#######################
 
 #Create a 'server'
 
 server <- function(input, output){
   
+  #output for burrito builder
   output$emission_contri <- renderPlot({
     
     plot_data <- data.frame(ingredient = c("chicken", "beef", "pork", "fish", "vegetables", "rice", "cheese", "salsa", "bread"),
@@ -218,7 +223,7 @@ server <- function(input, output){
       geom_bar(aes(fill = ingredient), stat="identity")
   })
   
-  #first tab
+  #output for offset calculator
   output$diamond_plot <- renderPlot({
     
     ggplot(data = diamonds, aes(x = carat, y = price))+
@@ -232,7 +237,7 @@ server <- function(input, output){
       filter(clarity %in% input$diamondclarity)
   })
   
-  #outout for secondtab
+  #output for secondtab
   
   
 }
