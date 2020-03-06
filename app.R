@@ -24,11 +24,11 @@ library(shinyWidgets)
 #Create 'ui' = "User Interface"
 
 ui <- navbarPage("Guilt-free Burritos",
-                 theme = shinytheme("united"),
+                 theme = shinytheme("flatly"),
                  tabPanel("Home",
                           h1("BURRITO BUILDER", style = "font-size:40px",align="center"),
                           p("The word 'burrito' means 'little donkey' in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:18px",align="center"),
-                          img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;'),
+                          img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.5;'),
                           tags$hr(),
                           # WHAT
                           fluidRow(
@@ -226,7 +226,8 @@ burritos <- read_csv("tacos_burritos.csv") %>%
          menus.description, 
          menus.name, 
          name, 
-         postalCode) %>% 
+         postalCode,
+         province) %>% 
   clean_names() %>% 
   filter(latitude != "NA" | longitude != "NA") %>% 
   filter(longitude < 0)
@@ -268,24 +269,28 @@ server <- function(input, output){
   })
   ### TAB 4 ###
   #reactive df for burrito map
-  # local_burritos <- reactive({
-  #   burritos %>%
-  #     filter(postal_code == input$postalcode)
-  # })
+  local_burritos <- reactive({
+    burritos %>%
+    filter(postal_code == input$postalcode)
+ })
   
   #output for burrito map
   
   output$burr_map <-renderLeaflet({
     leaflet(burritos) %>%
-    addCircles(lng = ~longitude, lat = ~latitude) %>%
-    addTiles() %>%
-    addCircleMarkers(data = burritos,
-                     lat = ~latitude,
-                     lng= ~longitude,
-                     radius =1,
-                     fillOpacity = 0.8)})
+    #addCircles(lng = ~longitude, lat = ~latitude) %>%
+    addTiles() %>% 
+      fitBounds(~min(longitude), ~min(latitude), ~max(longitude), ~max(latitude))
+    })
   
-  
+  observe({
+    leafletProxy("burr_map", data = local_burritos()) %>% 
+      addCircles(data = local_burritos,
+      lat = ~latitude,
+      lng= ~longitude,
+      radius =1,
+      fillOpacity = 0.8)
+  })
 
   
 }
