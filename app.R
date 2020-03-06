@@ -228,7 +228,8 @@ burritos <- read_csv("tacos_burritos.csv") %>%
          name, 
          postalCode) %>% 
   clean_names() %>% 
-  filter(latitude != "NA" | longitude != "NA")
+  filter(latitude != "NA" | longitude != "NA") %>% 
+  filter(longitude < 0)
 
 
 #note: we may have to filter out the messy zipcodes too
@@ -267,21 +268,21 @@ server <- function(input, output){
   })
   ### TAB 4 ###
   #reactive df for burrito map
-  local_burritos <- reactive({
-    burritos %>%
-      filter(postal_code == input$postalcode)
-  })
+  # local_burritos <- reactive({
+  #   burritos %>%
+  #     filter(postal_code == input$postalcode)
+  # })
   
   #output for burrito map
   
   output$burr_map <-renderLeaflet({
-    leaflet(local_burritos) %>%
+    leaflet(burritos) %>%
     addCircles(lng = ~longitude, lat = ~latitude) %>%
     addTiles() %>%
-    addCircleMarkers(data = local_burritos,
+    addCircleMarkers(data = burritos,
                      lat = ~latitude,
                      lng= ~longitude,
-                     radius =3,
+                     radius =1,
                      fillOpacity = 0.8)})
   
   
