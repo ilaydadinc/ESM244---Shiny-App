@@ -138,7 +138,15 @@ ui <- navbarPage("Guilt-free Burritos",
                             mainPanel("Greenhouse Gas Emissions",
                                       plotOutput(outputId = "emission_contri")) #output
                           )),
-                 tabPanel("Offset Calculator"),
+                 tabPanel("Offset Calculator",
+                          sidebarLayout(
+                            sidebarPanel("Offset Calculator",
+                                         selectInput(inputId = "offset_select",
+                                                     label = "How do you want to offset your Greenhouse gas emissions?",
+                                                     choices = unique(offset$Method))),
+                            mainPanel("Offset",
+                                      plotOutput(outputId = "offset_table"))
+                          )),
                  tabPanel("Get your burrito",
                           sidebarLayout(
                             sidebarPanel("Nearby burritos",
@@ -161,7 +169,7 @@ ui <- navbarPage("Guilt-free Burritos",
 
 veggie_raw<-read_csv("veggies.csv")
 meat_raw<-read_csv("meat.csv")
-offset<-read.csv("offset mechanisms.csv")
+
 
 #Data manipulation - Burrito Builder
 cheese_percent <- 0.249
@@ -259,6 +267,25 @@ server <- function(input, output){
       geom_bar(aes(fill = ingredient), stat="identity")
   })
   ### TAB 3 ###
+  
+  #Read in the data
+  offset<-read.csv("offset mechanisms.csv")
+  
+
+    # Create reactive object state_candy that changes based on state_select widget selection
+    offset_amount <- reactive({
+      offset %>%
+        filter(Method == input$method_select) %>%
+        select(Amount, Hours) %>% 
+        mutate(Offset== Amount*emission)
+      
+    })
+    
+    # Render a reactive table that uses state_candy reactive object (and note the parentheses after state_candy -- do that if calling a reactive object!)
+    output$offset_table <- renderTable({
+      offset_amount()
+    })
+  
   #output for offset calculator
   output$diamond_plot <- renderPlot({
     
