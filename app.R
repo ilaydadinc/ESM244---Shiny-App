@@ -161,7 +161,6 @@ ui <- navbarPage("Guilt-free Burritos",
 
 veggie_raw<-read_csv("veggies.csv")
 meat_raw<-read_csv("meat.csv")
-#restaurant<-read_csv("j_tacos_burritos.csv")
 offset<-read.csv("offset mechanisms.csv")
 
 #Data manipulation - Burrito Builder
