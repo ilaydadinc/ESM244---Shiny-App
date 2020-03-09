@@ -264,8 +264,12 @@ server <- function(input, output){
     
     ggplot(data = plot_data, aes(x = ingredient, y = emission))+
       geom_bar(aes(fill = ingredient), stat="identity")+
+      theme_classic()+
       theme(legend.position="none")+
-      theme_classic()
+      scale_y_continuous(expand = c(0,0))+
+      labs(x ="Ingredient",
+           y = expression ('Greenhouse Gas Emissions (CO'_2*' equivalent)'))
+     
   })
   ### TAB 3 ###
   
