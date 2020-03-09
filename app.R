@@ -296,7 +296,7 @@ server <- function(input, output){
     
     total_name <-  "Total GHG Emission (gram carbon dioxide-eq)" 
     
-    kable_data <- data.frame(c(total_name, as.character(total_emission)))
+    kable_data <- data.frame(c(as.character(total_emission)))
     
     kable(kable_data, col.names = c("Total Greenhouse Gas Emissions (g CO$[2]$ equivalent)")) %>%
       kable_styling(
