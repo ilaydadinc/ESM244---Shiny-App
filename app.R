@@ -264,7 +264,8 @@ server <- function(input, output){
     
     ggplot(data = plot_data, aes(x = ingredient, y = emission))+
       geom_bar(aes(fill = ingredient), stat="identity")+
-      theme(legend.position="none")
+      theme(legend.position="none")+
+      theme_classic()
   })
   ### TAB 3 ###
   
