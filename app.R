@@ -77,7 +77,7 @@ ui <- navbarPage("Guilt-free Burritos",
                  tabPanel("Burrito Builder!",
                           sidebarLayout(
                             sidebarPanel(h1("Choose your ingredients"),
-                                         "Start with a base",
+                                         h3("Start with a base"),
                                          sliderInput(inputId = "chicken", #change widget here
                                                      label = "Chicken (grams)",
                                                      min = 0,
@@ -113,7 +113,7 @@ ui <- navbarPage("Guilt-free Burritos",
                                                      0,
                                                      step = 1,
                                                      ticks = FALSE),
-                                         h1("Add more other stuff"),
+                                         h3("Add some other stuff"),
                                          sliderInput(inputId = "rice", #change widget here
                                                      label = "Rice (grams)",
                                                      min = 0,
@@ -156,7 +156,7 @@ ui <- navbarPage("Guilt-free Burritos",
                                                       label = "Enter your zipcode",
                                                       value = "e.g. 93117"
                                          )),
-                            mainPanel("Map",
+                            mainPanel("Nearby Burritos",
                                       leafletOutput("burr_map"))
                           )),
                  tabPanel("References",
