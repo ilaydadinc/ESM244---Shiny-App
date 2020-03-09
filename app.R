@@ -301,28 +301,28 @@ server <- function(input, output){
   })
   ### TAB 4 ###
   #reactive df for burrito map
-  # local_burritos <- reactive({
-  #   burritos %>%
-  #   filter(postal_code == input$postalcode)
- # })
+ local_burritos <- reactive({
+   burritos %>%
+   filter(postal_code == input$postalcode)
+ })
   
   #output for burrito map
   
-  # output$burr_map <-renderLeaflet({
-  #   leaflet(burritos) %>%
-  #   #addCircles(lng = ~longitude, lat = ~latitude) %>%
-  #   addTiles() %>% 
-  #     fitBounds(~min(longitude), ~min(latitude), ~max(longitude), ~max(latitude))
-  #   })
-  # 
-  # observe({
-  #   leafletProxy("burr_map", data = local_burritos()) %>% 
-  #     addCircles(data = local_burritos,
-  #     lat = ~latitude,
-  #     lng= ~longitude,
-  #     radius =1,
-  #     fillOpacity = 0.8)
-  # })
+  output$burr_map <-renderLeaflet({
+    leaflet(burritos) %>%
+    #addCircles(lng = ~longitude, lat = ~latitude) %>%
+    addTiles() %>%
+      fitBounds(~min(longitude), ~min(latitude), ~max(longitude), ~max(latitude))
+    })
+
+  observe({
+    leafletProxy("burr_map", data = local_burritos()) %>%
+      addCircles(data = local_burritos(),
+      lat = ~latitude,
+      lng= ~longitude,
+      radius =1,
+      fillOpacity = 0.8)
+  })
 
   
 }
