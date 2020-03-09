@@ -164,10 +164,8 @@ ui <- navbarPage("Guilt-free Burritos",
                                       leafletOutput("burr_map"))
                           )),
                  tabPanel("References",
-                          sidebarLayout(
-                            sidebarPanel(),
-                            mainPanel("Yay"))
-                          )
+                            mainPanel("REFERENCES"))
+                          
                  
                  
                           
