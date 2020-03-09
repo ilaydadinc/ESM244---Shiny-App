@@ -137,7 +137,7 @@ ui <- navbarPage("Guilt-free Burritos",
                                                      step = 1,
                                                      ticks = FALSE)
                                          ),
-                            mainPanel("Greenhouse Gas Emissions",
+                            mainPanel(h1("Greenhouse Gas Emissions by Ingredient", style = "font-size:30px",align="center"),
                                       plotOutput(outputId = "emission_contri"),
                                       htmlOutput("emission_table")) #output
                           )),
