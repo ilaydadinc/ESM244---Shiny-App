@@ -98,13 +98,13 @@ ui <- navbarPage("Guilt-free Burritos",
                                                      0,
                                                      step = 10,
                                                      ticks = FALSE),
-                                         sliderInput(inputId = "fish", #change widget here
-                                                     label = "Fish (grams)",
-                                                     min = 0,
-                                                     max = 200,
-                                                     0,
-                                                     step = 10,
-                                                     ticks = FALSE),
+                                         #sliderInput(inputId = "fish", #change widget here
+                                          #           label = "Fish (grams)",
+                                           #          min = 0,
+                                            #         max = 200,
+                                             #        0,
+                                              #       step = 10,
+                                               #      ticks = FALSE),
                                          sliderInput(inputId = "vegetables", #change widget here
                                                      label = "Veggies (grams)",
                                                      min = 0,
@@ -251,11 +251,10 @@ server <- function(input, output){
   #output for burrito builder
   output$emission_contri <- renderPlot({
     
-    plot_data <- data.frame(ingredient = c("chicken", "beef", "pork", "fish", "vegetables", "rice", "cheese", "salsa", "bread"),
+    plot_data <- data.frame(ingredient = c("chicken", "beef", "pork", "vegetables", "rice", "cheese", "salsa", "bread"),
                        emission = c(input$chicken*ingredient_final$meat_chicken, 
                                     input$beef*ingredient_final$meat_cattle,
                                     input$pork*ingredient_final$meat_pig,
-                                    input$fish*ingredient_final$fish_farmed,
                                     input$vegetables*ingredient_final$other_vegetables,
                                     input$rice*ingredient_final$rice_paddy,
                                     input$cheese*ingredient_final$cheese,
