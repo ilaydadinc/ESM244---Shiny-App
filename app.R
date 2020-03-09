@@ -320,6 +320,7 @@ server <- function(input, output){
       addCircles(data = local_burritos(),
       lat = ~latitude,
       lng= ~longitude,
+      label = ~name,
       radius =1,
       fillOpacity = 0.8)
   })
