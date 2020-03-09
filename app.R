@@ -29,8 +29,8 @@ ui <- navbarPage("Guilt-free Burritos",
                  theme = shinytheme("flatly"),
                  tabPanel("Home",
                           h1("BURRITO BUILDER", style = "font-size:40px",align="center"),
-                          p("The word 'burrito' means 'little donkey' in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:18px",align="center"),
-                          img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.5;'),
+                          p("The word 'burrito' means 'little donkey', in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:18px",align="center"),
+                          img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;'),
                           tags$hr(),
                           # WHAT
                           fluidRow(
@@ -137,13 +137,13 @@ ui <- navbarPage("Guilt-free Burritos",
                                                      step = 1,
                                                      ticks = FALSE)
                                          ),
-                            mainPanel("Greenhouse Gas Emissions",
+                            mainPanel(h1("Greenhouse Gas Emissions by Ingredient", style = "font-size:25px",align="center"),
                                       plotOutput(outputId = "emission_contri"),
                                       htmlOutput("emission_table")) #output
                           )),
                  tabPanel("Offset Calculator",
                           sidebarLayout(
-                            sidebarPanel("Offset Calculator",
+                            sidebarPanel(
                                          selectInput(inputId = "offset_select",
                                                      label = "How do you want to offset your Greenhouse gas emissions?",
                                                      choices = c("Planting Trees" = "Tree",
@@ -163,10 +163,13 @@ ui <- navbarPage("Guilt-free Burritos",
                                       leafletOutput("burr_map"))
                           )),
                  tabPanel("References",
-                          sidebarLayout(
-                            sidebarPanel(),
-                            mainPanel("Yay"))
-                          )
+                            shiny::HTML("<b> REFERENCES </b> <br> [1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
+
+[2]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
+<https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference>
+<br>
+[3]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from <https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos>  "))
+                          
                  
                  
                           
