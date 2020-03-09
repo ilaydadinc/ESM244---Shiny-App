@@ -268,7 +268,7 @@ server <- function(input, output){
       theme(legend.position="none")+
       scale_y_continuous(expand = c(0,0))+
       labs(x ="Ingredient",
-           y = expression ('Greenhouse Gas Emissions (CO'_2*' equivalent)'))
+           y = "Greenhouse Gas Emissions")
      
   })
   ### TAB 3 ###
