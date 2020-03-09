@@ -156,7 +156,18 @@ ui <- navbarPage("Guilt-free Burritos",
                                          )),
                             mainPanel("Nearby Burritos",
                                       leafletOutput("burr_map"))
+                          )),
+                 tabPanel("References",
+                          sidebarLayout(
+                            sidebarPanel("Nearby burritos",
+                                         textInput("postalcode",
+                                                   label = "Enter your zipcode",
+                                                   value = "e.g. 93117"
+                                         )),
+                            mainPanel("Map",
+                                      leafletOutput("burr_map"))
                           ))
+                 
                  
                           
                           
@@ -251,7 +262,7 @@ server <- function(input, output){
   #output for burrito builder
   output$emission_contri <- renderPlot({
     
-    plot_data <- data.frame(ingredient = c("Chicken", "Beef", "Pork", "Vegetables", "Rice", "Cheese", "Salsa", "Bread"),
+    plot_data <- data.frame(ingredient = c("chicken", "beef", "pork", "vegetables", "rice", "cheese", "salsa", "bread"),
                        emission = c(input$chicken*ingredient_final$meat_chicken, 
                                     input$beef*ingredient_final$meat_cattle,
                                     input$pork*ingredient_final$meat_pig,
@@ -267,11 +278,8 @@ server <- function(input, output){
       theme_classic()+
       theme(legend.position="none")+
       scale_y_continuous(expand = c(0,0))+
-      labs(x ="\nIngredient",
-           y = expression(paste("Greenhouse Gas Emission" , " (CO"[2], " equivalent) ")))+
-      theme(axis.text.x = element_text(color = "grey20", size = 15),
-            axis.title.x = element_text(color = "grey20", size = 16),
-            axis.title.y = element_text(color = "grey20", size = 16))
+      labs(x ="Ingredient",
+           y = expression(paste("Greenhouse Gas Emission" , " (CO"[2], " equivalent) ")))
      
   })
   ### TAB 3 ###
@@ -291,6 +299,16 @@ server <- function(input, output){
     
     # Render a reactive table that uses state_candy reactive object (and note the parentheses after state_candy -- do that if calling a reactive object!)
     output$offset_table <- renderTable({
+      
+      total_emission <- input$chicken*ingredient_final$meat_chicken + 
+        input$beef*ingredient_final$meat_cattle+
+        input$pork*ingredient_final$meat_pig+
+        input$vegetables*ingredient_final$other_vegetables+
+        input$rice*ingredient_final$rice_paddy+
+        input$cheese*ingredient_final$cheese+
+        (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
+        100 * ingredient_final$wheat_rye_bread
+      
       offset_amount()
     })
   
