@@ -143,7 +143,7 @@ ui <- navbarPage("Guilt-free Burritos",
                           )),
                  tabPanel("Offset Calculator",
                           sidebarLayout(
-                            sidebarPanel("Offset Calculator",
+                            sidebarPanel(
                                          selectInput(inputId = "offset_select",
                                                      label = "How do you want to offset your Greenhouse gas emissions?",
                                                      choices = c("Planting Trees" = "Tress",
