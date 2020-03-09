@@ -271,6 +271,7 @@ server <- function(input, output){
   #Read in the data
   offset<-read.csv("offset mechanisms.csv")
   
+  
 
     # Create reactive object state_candy that changes based on state_select widget selection
     offset_amount <- reactive({
