@@ -251,7 +251,7 @@ server <- function(input, output){
   #output for burrito builder
   output$emission_contri <- renderPlot({
     
-    plot_data <- data.frame(ingredient = c("chicken", "beef", "pork", "vegetables", "rice", "cheese", "salsa", "bread"),
+    plot_data <- data.frame(ingredient = c("Chicken", "Beef", "Pork", "Vegetables", "Rice", "Cheese", "Salsa", "Bread"),
                        emission = c(input$chicken*ingredient_final$meat_chicken, 
                                     input$beef*ingredient_final$meat_cattle,
                                     input$pork*ingredient_final$meat_pig,
@@ -267,8 +267,11 @@ server <- function(input, output){
       theme_classic()+
       theme(legend.position="none")+
       scale_y_continuous(expand = c(0,0))+
-      labs(x ="Ingredient",
-           y = expression(paste("Greenhouse Gas Emission" , " (CO"[2], " equivalent) ")))
+      labs(x ="\nIngredient",
+           y = expression(paste("Greenhouse Gas Emission" , " (CO"[2], " equivalent) ")))+
+      theme(axis.text.x = element_text(color = "grey20", size = 15),
+            axis.title.x = element_text(color = "grey20", size = 16),
+            axis.title.y = element_text(color = "grey20", size = 16))
      
   })
   ### TAB 3 ###
