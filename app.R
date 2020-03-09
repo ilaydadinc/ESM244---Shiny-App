@@ -317,8 +317,7 @@ server <- function(input, output){
     leafletProxy("burr_map", data = local_burritos()) %>%
       addCircles(data = local_burritos(),
       lat = ~latitude,
-      lng= ~longitude,
-      label = ~name,
+      lng= ~longitude
       radius =1,
       fillOpacity = 0.8)
   })
