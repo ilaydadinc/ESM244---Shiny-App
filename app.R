@@ -18,6 +18,7 @@ library(janitor)
 library(leaflet)
 library(shinyWidgets)
 library(kableExtra)
+library(extrafont)
 
 
 
@@ -299,12 +300,12 @@ server <- function(input, output){
     
     total_name <-  "Total GHG Emission (gram carbon dioxide-eq)" 
     
-    kable_data <- data.frame(c(as.character(total_emission)))
+    kable_data <- data.frame(c(as.character(round(total_emission,digits = 1))))
     
-    kable(kable_data, col.names = c("Total Greenhouse Gas Emissions (g CO$[2]$ equivalent)")) %>%
+    kable(kable_data, col.names = c("Total Greenhouse Gas Emissions (g CO2 eq)")) %>%
       kable_styling(
-        font_size = 15,
-        bootstrap_options = c("striped", "hover", "condensed")
+        font_size = 20,
+        bootstrap_options = c("striped", "condensed")
       ) 
   })
   ### TAB 3 ###
