@@ -274,8 +274,6 @@ server <- function(input, output){
   ### TAB 3 ###
   
   #Read in the data
-
-  
   
 
     # Create reactive object state_candy that changes based on state_select widget selection
