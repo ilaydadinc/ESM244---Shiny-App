@@ -146,12 +146,11 @@ ui <- navbarPage("Guilt-free Burritos",
                             sidebarPanel("Offset Calculator",
                                          selectInput(inputId = "offset_select",
                                                      label = "How do you want to offset your Greenhouse gas emissions?",
-                                                     choices = c("Planting Trees" = "Tress",
+                                                     choices = c("Planting Trees" = "Tree",
                                                                  "Biking instead of Driving" = "Bike",
                                                                  "Walking instead of Driving" = "Walk",
                                                                  "Recyling instead of Landfilling" = "Waste"))),
-                            mainPanel("Offset",
-                                      plotOutput(outputId = "offset_table"))
+                            mainPanel(valueBoxOutput("offset_table"))
                           )),
                  tabPanel("Get your burrito",
                           sidebarLayout(
@@ -312,7 +311,7 @@ server <- function(input, output){
   
   #Read in the data
   
- offset<-read.csv("offset mechanisms.csv")
+ offset<-read_csv("offset mechanisms.csv")
  
     # Create reactive object state_candy that changes based on state_select widget selection
     offset_amount <- reactive({
@@ -324,7 +323,7 @@ server <- function(input, output){
     })
     
     # Render a reactive table that uses state_candy reactive object (and note the parentheses after state_candy -- do that if calling a reactive object!)
-    output$offset_table <- renderTable({
+    output$offset_table <- renderValueBox({
       
       total_emission <- input$chicken*ingredient_final$meat_chicken + 
         input$beef*ingredient_final$meat_cattle+
@@ -335,7 +334,45 @@ server <- function(input, output){
         (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
         100 * ingredient_final$wheat_rye_bread
       
-      offset_amount()
+      if (req(input$offset_select) == "Walk") {
+        temp_df <- offset %>% 
+          filter(Method == "Walk") %>% 
+          select(Hours)
+        
+        temp_para <- as.numeric(temp_df$Hours)
+        
+        valueBox(paste0(total_emission*temp_para/1e6, "Hours"), 
+                 "Walking instead of Driving", icon = icon("walking"), color = "yellow")
+      } else if (req(input$offset_select) == "Tree") {
+        temp_df <- offset %>% 
+          filter(Method == "Tree") %>% 
+          select(Amount)
+        
+        temp_para <- as.numeric(temp_df$Amount)
+        
+        valueBox(paste0(total_emission*temp_para/1e6, "Seedlings"), 
+                 "Growing Trees", icon = icon("tree"), color = "green")
+        
+      } else if (req(input$offset_select) == "Bike") {
+        temp_df <- offset %>% 
+          filter(Method == "Bike") %>% 
+          select(Hours)
+        
+        temp_para <- as.numeric(temp_df$Hours)
+        
+        valueBox(paste0(total_emission*temp_para/1e6, "Hours"), 
+                 "Biking instead of Driving", icon = icon("bicycle"), color = "blue")
+      
+      } else {
+        temp_df <- offset %>% 
+          filter(Method == "Waste") %>% 
+          select(Amount)
+        
+        temp_para <- as.numeric(temp_df$Amount)
+        
+        valueBox(paste0(total_emission*temp_para/1e6, "Bags"), 
+                 "Recycling instead of Landfiling", icon = icon("recycle"), color = "orange")
+      }
     })
   
   #output for offset calculator
