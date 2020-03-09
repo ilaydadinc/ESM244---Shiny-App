@@ -25,8 +25,14 @@ library(extrafont)
 
 #Create 'ui' = "User Interface"
 
-ui <- navbarPage("Guilt-free Burritos",
-                 theme = shinytheme("flatly"),
+ui <- navbarPage(
+  
+  header = tagList(
+    useShinydashboard()
+  ),
+  
+  "Guilt-free Burritos",
+  theme = shinytheme("flatly"),
                  tabPanel("Home",
                           h1("BURRITO BUILDER", style = "font-size:40px",align="center"),
                           p("The word 'burrito' means 'little donkey', in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:18px",align="center"),
@@ -344,8 +350,8 @@ server <- function(input, output){
         
         temp_para <- as.numeric(temp_df$Hours)
         
-        valueBox(paste0(total_emission*temp_para/1e6, "Hours"), 
-                 "Walking instead of Driving", icon = icon("walking"), color = "yellow")
+        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), "B to 1Hr"), 
+                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), "burritos, 1 hour of walking instead of driving is needed."), icon = icon("walking"), color = "yellow", width = NULL)
       } else if (req(input$offset_select) == "Tree") {
         temp_df <- offset %>% 
           filter(Method == "Tree") %>% 
@@ -353,8 +359,8 @@ server <- function(input, output){
         
         temp_para <- as.numeric(temp_df$Amount)
         
-        valueBox(paste0(total_emission*temp_para/1e6, "Seedlings"), 
-                 "Growing Trees", icon = icon("tree"), color = "green")
+        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), "B to 1S"), 
+                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), "burritos, 1 tree need to be grown."), icon = icon("tree"), color = "green", width = NULL)
         
       } else if (req(input$offset_select) == "Bike") {
         temp_df <- offset %>% 
@@ -363,8 +369,8 @@ server <- function(input, output){
         
         temp_para <- as.numeric(temp_df$Hours)
         
-        valueBox(paste0(total_emission*temp_para/1e6, "Hours"), 
-                 "Biking instead of Driving", icon = icon("bicycle"), color = "blue")
+        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), "B to 1Hr"), 
+                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), "burritos, 1 hour of biking instead of driving is needed."), icon = icon("bicycle"), color = "blue", width = NULL)
       
       } else {
         temp_df <- offset %>% 
@@ -373,8 +379,8 @@ server <- function(input, output){
         
         temp_para <- as.numeric(temp_df$Amount)
         
-        valueBox(paste0(total_emission*temp_para/1e6, "Bags"), 
-                 "Recycling instead of Landfiling", icon = icon("recycle"), color = "orange")
+        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), "B to 1B"), 
+                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), "burritos, 1 bag of trash need to be recycled instead of landfilled."), icon = icon("recycle"), color = "orange", width = NULL)
       }
     })
   
