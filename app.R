@@ -291,6 +291,16 @@ server <- function(input, output){
     
     # Render a reactive table that uses state_candy reactive object (and note the parentheses after state_candy -- do that if calling a reactive object!)
     output$offset_table <- renderTable({
+      
+      total_emission <- input$chicken*ingredient_final$meat_chicken + 
+        input$beef*ingredient_final$meat_cattle+
+        input$pork*ingredient_final$meat_pig+
+        input$vegetables*ingredient_final$other_vegetables+
+        input$rice*ingredient_final$rice_paddy+
+        input$cheese*ingredient_final$cheese+
+        (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
+        100 * ingredient_final$wheat_rye_bread
+      
       offset_amount()
     })
   
