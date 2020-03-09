@@ -17,6 +17,7 @@ library(dplyr)
 library(janitor)
 library(leaflet)
 library(shinyWidgets)
+library(kableExtra)
 
 
 
@@ -136,7 +137,8 @@ ui <- navbarPage("Guilt-free Burritos",
                                                      ticks = FALSE)
                                          ),
                             mainPanel("Greenhouse Gas Emissions",
-                                      plotOutput(outputId = "emission_contri")) #output
+                                      plotOutput(outputId = "emission_contri"),
+                                      htmlOutput("emission_table")) #output
                           )),
                  tabPanel("Offset Calculator",
                           sidebarLayout(
@@ -159,14 +161,9 @@ ui <- navbarPage("Guilt-free Burritos",
                           )),
                  tabPanel("References",
                           sidebarLayout(
-                            sidebarPanel("Nearby burritos",
-                                         textInput("postalcode",
-                                                   label = "Enter your zipcode",
-                                                   value = "e.g. 93117"
-                                         )),
-                            mainPanel("Map",
-                                      leafletOutput("burr_map"))
-                          ))
+                            sidebarPanel(),
+                            mainPanel("Yay"))
+                          )
                  
                  
                           
@@ -262,7 +259,7 @@ server <- function(input, output){
   #output for burrito builder
   output$emission_contri <- renderPlot({
     
-    plot_data <- data.frame(ingredient = c("chicken", "beef", "pork", "vegetables", "rice", "cheese", "salsa", "bread"),
+    plot_data <- data.frame(ingredient = c("Chicken", "Beef", "Pork", "Vegetables", "Rice", "Cheese", "Salsa", "Bread"),
                        emission = c(input$chicken*ingredient_final$meat_chicken, 
                                     input$beef*ingredient_final$meat_cattle,
                                     input$pork*ingredient_final$meat_pig,
@@ -278,9 +275,34 @@ server <- function(input, output){
       theme_classic()+
       theme(legend.position="none")+
       scale_y_continuous(expand = c(0,0))+
-      labs(x ="Ingredient",
-           y = expression(paste("Greenhouse Gas Emission" , " (CO"[2], " equivalent) ")))
+      labs(x ="\nIngredient",
+           y = expression(paste("Greenhouse Gas Emission" , " (g-CO"[2], " equivalent) ")))+
+      theme(axis.text.x = element_text(color = "grey20", size = 15),
+            axis.title.x = element_text(color = "grey20", size = 16),
+            axis.title.y = element_text(color = "grey20", size = 16))
      
+  })
+  
+  output$emission_table <- renderText({
+    
+    total_emission <- input$chicken*ingredient_final$meat_chicken + 
+      input$beef*ingredient_final$meat_cattle+
+      input$pork*ingredient_final$meat_pig+
+      input$vegetables*ingredient_final$other_vegetables+
+      input$rice*ingredient_final$rice_paddy+
+      input$cheese*ingredient_final$cheese+
+      (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
+      100 * ingredient_final$wheat_rye_bread
+    
+    total_name <-  "Total GHG Emission (gram carbon dioxide-eq)" 
+    
+    kable_data <- data.frame(c(total_name, as.character(total_emission)))
+    
+    kable(kable_data) %>%
+      kable_styling(
+        font_size = 15,
+        bootstrap_options = c("striped", "hover", "condensed")
+      ) 
   })
   ### TAB 3 ###
   
