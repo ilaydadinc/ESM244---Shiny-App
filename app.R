@@ -164,7 +164,12 @@ ui <- navbarPage("Guilt-free Burritos",
                                       leafletOutput("burr_map"))
                           )),
                  tabPanel("References",
-                            mainPanel("REFERENCES"))
+                            shiny::HTML("<b> REFERENCES </b> <br> [1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
+
+[2]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
+<https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference>
+<br>
+[3]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from <https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos>  "))
                           
                  
                  
