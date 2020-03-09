@@ -19,7 +19,7 @@ library(leaflet)
 library(shinyWidgets)
 
 
-
+offset<-read.csv("offset mechanisms.csv")
 
 #Create 'ui' = "User Interface"
 
@@ -274,7 +274,7 @@ server <- function(input, output){
   ### TAB 3 ###
   
   #Read in the data
-  offset<-read.csv("offset mechanisms.csv")
+
   
   
 
