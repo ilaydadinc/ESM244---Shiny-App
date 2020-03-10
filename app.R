@@ -32,9 +32,13 @@ ui <- navbarPage(
     useShinydashboard()
   ),
   
-  "Guilt-free Burritos",
+  
+  
+
+  
+  "Guilt-free Burritos", 
   theme = shinytheme("flatly"),
-                 tabPanel("Home",
+                 tabPanel("Home", icon = icon("home"),
                           h1("BURRITO BUILDER", style = "font-size:40px",align="center"),
                           p("The word 'burrito' means 'little donkey', in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:18px",align="center"),
                           img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;'),
@@ -82,7 +86,7 @@ ui <- navbarPage(
                  ), # Closes the first tabPanel called "Home"
                  
       
-                 tabPanel("Burrito Builder!",
+                 tabPanel("Burrito Builder!",icon = icon("utensils"),
                           sidebarLayout(
                             sidebarPanel(h1("Choose your ingredients"),
                                          h3("Start with a base"),
@@ -146,9 +150,10 @@ ui <- navbarPage(
                                          ),
                             mainPanel(h1("Greenhouse Gas Emissions by Ingredient", style = "font-size:25px",align="center"),
                                       plotOutput(outputId = "emission_contri"),
+                                      HTML("<br><br><br>"),
                                       htmlOutput("emission_table")) #output
                           )),
-                 tabPanel("Offset Calculator",
+                 tabPanel("Offset Calculator",icon = icon("calculator"),
                           sidebarLayout(
                             sidebarPanel(
                                          selectInput(inputId = "offset_select_1",
@@ -183,7 +188,7 @@ ui <- navbarPage(
                                       uiOutput("offset_table_2"),
                                       uiOutput("offset_table_3"))
                           )),
-                 tabPanel("Get your burrito",
+                 tabPanel("Get your burrito", icon = icon("map-marked-alt"),
                           sidebarLayout(
                             sidebarPanel(h2("Nearby burritos"),
                                          "Enter your zipcode to find a burrito establishment close to you",
@@ -193,7 +198,7 @@ ui <- navbarPage(
                                          )),
                             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
                           )),
-                 tabPanel("References", style = "font-size:25px",align="left",
+                 tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
                             shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
 <br>
 [2]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
@@ -354,7 +359,7 @@ server <- function(input, output){
     total_name <-  "Total GHG Emission (gram carbon dioxide-eq)" 
     
     kable_data <- data.frame(c(as.character(round(total_emission,digits = 1))))
-    
+      
     kable(kable_data, col.names = c("Total Greenhouse Gas Emissions (g CO2 eq)")) %>%
       kable_styling(
         font_size = 20,
