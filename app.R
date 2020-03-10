@@ -151,7 +151,10 @@ ui <- navbarPage(
                             mainPanel(h1("Greenhouse Gas Emissions by Ingredient", style = "font-size:25px",align="center"),
                                       plotOutput(outputId = "emission_contri"),
                                       HTML("<br><br><br>"),
-                                      htmlOutput("emission_table")) #output
+                                      htmlOutput("emission_table"),
+                                      HTML(" Explanation here"))
+                        
+            
                           )),
                  tabPanel("Offset Calculator",icon = icon("calculator"),
                           sidebarLayout(
@@ -186,7 +189,8 @@ ui <- navbarPage(
                                          ),
                             mainPanel(uiOutput("offset_table_1"),
                                       uiOutput("offset_table_2"),
-                                      uiOutput("offset_table_3"))
+                                      uiOutput("offset_table_3"),
+                                      HTML(" Explanation here"))
                           )),
                  tabPanel("Get your burrito", icon = icon("map-marked-alt"),
                           sidebarLayout(
@@ -198,6 +202,8 @@ ui <- navbarPage(
                                          )),
                             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
                           )),
+  tabPanel("Team", icon = icon("users"),
+           ),
                  tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
                             shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
 <br>
