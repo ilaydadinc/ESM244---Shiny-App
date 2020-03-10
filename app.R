@@ -34,7 +34,6 @@ ui <- navbarPage(
   
   
   
-
   
   "Guilt-free Burritos", 
   theme = shinytheme("flatly"),
