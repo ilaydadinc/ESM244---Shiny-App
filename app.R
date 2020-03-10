@@ -40,16 +40,16 @@ ui <- navbarPage(
   theme = shinytheme("flatly"),
                  tabPanel("Home", icon = icon("home"),
                           h1("BURRITO BUILDER", style = "font-size:40px",align="center"),
-                          p("The word 'burrito' means 'little donkey', in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:18px",align="center"),
+                          p("The word 'burrito' means 'little donkey', in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:20px",align="center"),
                           img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;'),
                           tags$hr(),
                           # WHAT
                           fluidRow(
-                            column(2),
-                            column(8,
-                                   shiny::HTML("<center><h4>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? This app is here to help you to build your burrito and see your environmental impact in the form of greenhouse gas emissions.</h4></center>")
+                          
+                            column(12,
+                                   shiny::HTML("<center><h4>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? <br>This app is here to help you to build your burrito and see your environmental impact in the form of greenhouse gas emissions.</h4></center>")
                             ),
-                            column(2)
+                            column(4)
                             ),
                           fluidRow(
                             style = "height:10px;"
@@ -59,9 +59,9 @@ ui <- navbarPage(
                           # WHERE
                           fluidRow(
                             column(2),
-                            column(8,
+                            column(12,
                                    shiny::HTML("<br><br><center> <h1>How does it work?</h1> </center><br>"),
-                                   shiny::HTML("<center><h4> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions according to the your choices.Then, if you keep exploring our app and you will see how you can offset these emissions by making small changes to your life choices in the 'Offset Calculator'tab.</h4></center>")
+                                   shiny::HTML("<center><h4> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions according to the your choices.<br> Then, if you keep exploring our app and you will see how you can offset these emissions by making small changes to your life choices in the 'Offset Calculator'tab.</h4></center>")
                             ),
                             column(2)
                           ),
@@ -72,8 +72,8 @@ ui <- navbarPage(
                           # HOW
                           fluidRow(
                             column(2),
-                            column(8,
-                                   shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? Don’t worry we got you!
+                            column(12,
+                                   shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? <br> Don’t worry we got you!
 
 </h1> </center><br>")
                             ),
