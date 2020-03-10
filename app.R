@@ -128,21 +128,21 @@ ui <- navbarPage(
                                          sliderInput(inputId = "rice", #change widget here
                                                      label = "Rice (grams)",
                                                      min = 0,
-                                                     max = 200,
+                                                     max = 60,
                                                      0,
                                                      step = 10,
                                                      ticks = FALSE),
                                          sliderInput(inputId = "cheese", #change widget here
                                                      label = "Cheese (grams)",
                                                      min = 0,
-                                                     max = 200,
+                                                     max = 60,
                                                      0,
                                                      step = 1,
                                                      ticks = FALSE),
                                          sliderInput(inputId = "salsa", #change widget here
                                                      label = "Salsa (grams)",
                                                      min = 0,
-                                                     max = 200,
+                                                     max = 50,
                                                      0,
                                                      step = 1,
                                                      ticks = FALSE)
