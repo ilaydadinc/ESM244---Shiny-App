@@ -19,6 +19,7 @@ library(leaflet)
 library(shinyWidgets)
 library(kableExtra)
 library(extrafont)
+library(paletteer)
 
 
 
@@ -310,7 +311,8 @@ server <- function(input, output){
            y = expression(paste("Greenhouse Gas Emission" , " (g-CO"[2], " equivalent) ")))+
       theme(axis.text.x = element_text(color = "grey20", size = 15),
             axis.title.x = element_text(color = "grey20", size = 16),
-            axis.title.y = element_text(color = "grey20", size = 16))
+            axis.title.y = element_text(color = "grey20", size = 16))+
+      scale_fill_paletteer_d("calecopal::figmtn")
      
   })
   
@@ -428,6 +430,7 @@ server <- function(input, output){
 
   observe({
     leafletProxy("burr_map", data = local_burritos()) %>%
+      clearShapes() %>% 
       addCircles(data = local_burritos(),
       lat = ~latitude,
       lng= ~longitude,
@@ -436,6 +439,7 @@ server <- function(input, output){
       popup = ~name)
   })
 
+#table with information
   
 }
 
