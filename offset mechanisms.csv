@@ -1,7 +1,7 @@
-Method,Amount,Unit,Hours
-Tree,16.5,seedlings,
-Waste,42.5,trash bags,
-Bike ,2481,miles,206.75
-Walk,2481,miles,800.3225806
-Lamps,38,,
-Skate,2481,miles,275.666666666667
+Method,Amount,Hours,Value,Unit,text_1,text_2
+tree,16.5,,16.5,seedlings, Burritos to 1 Seedling,"burritos, 1 tree needs to be grown."
+recycle,42.5,,42.5,trash bags, Burritos to 1 Bag,"burritos, 1 bag of trash need to be recycled instead of landfilled."
+bicycle,2481,206.75,206.75,hours, Burritos to 1 Hour,"burritos, 1 hour of biking instead of driving is needed."
+walking,2481,800.3225806,800.3225806,hours, Burritos to 1 Hour,"burritos, 1 hour of walking instead of driving is needed."
+lightbulb,38,,38,units, Burritos to 1 Unit,"burritos, 1 lamp needs to be switched from incandescent lamp to LED."
+snowboarding,2481,275.6666667,275.6666667,hours, Burritos to 1 Hour,"burritos, 1 hour of skating instead of driving is needed."

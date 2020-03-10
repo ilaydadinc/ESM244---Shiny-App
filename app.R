@@ -151,13 +151,37 @@ ui <- navbarPage(
                  tabPanel("Offset Calculator",
                           sidebarLayout(
                             sidebarPanel(
-                                         selectInput(inputId = "offset_select",
-                                                     label = "How do you want to offset your Greenhouse gas emissions?",
-                                                     choices = c("Planting Trees" = "Tree",
-                                                                 "Biking instead of Driving" = "Bike",
-                                                                 "Walking instead of Driving" = "Walk",
-                                                                 "Recyling instead of Landfilling" = "Waste"))),
-                            mainPanel(valueBoxOutput("offset_table"))
+                                         selectInput(inputId = "offset_select_1",
+                                                     label = "What is your first option to offset your Greenhouse gas emissions?",
+                                                     choices = c("Planting Trees" = "tree",
+                                                                 "Biking instead of Driving" = "bicycle",
+                                                                 "Walking instead of Driving" = "walking",
+                                                                 "Recyling instead of Landfilling" = "recycle",
+                                                                 "Skating instead of Driving" = "snowboarding",
+                                                                 "Switching from Incandescent Lamps to LED" = "lightbulb")
+                                                     ),
+                                         selectInput(inputId = "offset_select_2",
+                                                     label = "What is your second option to offset your Greenhouse gas emissions?",
+                                                     choices = c("Planting Trees" = "tree",
+                                                                 "Biking instead of Driving" = "bicycle",
+                                                                 "Walking instead of Driving" = "walking",
+                                                                 "Recyling instead of Landfilling" = "recycle",
+                                                                 "Skating instead of Driving" = "snowboarding",
+                                                                 "Switching from Incandescent Lamps to LED" = "lightbulb")
+                                         ),
+                                         selectInput(inputId = "offset_select_3",
+                                                     label = "What is your third option to offset your Greenhouse gas emissions?",
+                                                     choices = c("Planting Trees" = "tree",
+                                                                 "Biking instead of Driving" = "bicycle",
+                                                                 "Walking instead of Driving" = "walking",
+                                                                 "Recyling instead of Landfilling" = "recycle",
+                                                                 "Skating instead of Driving" = "snowboarding",
+                                                                 "Switching from Incandescent Lamps to LED" = "lightbulb")
+                                         )
+                                         ),
+                            mainPanel(uiOutput("offset_table_1"),
+                                      uiOutput("offset_table_2"),
+                                      uiOutput("offset_table_3"))
                           )),
                  tabPanel("Get your burrito",
                           sidebarLayout(
@@ -344,16 +368,16 @@ server <- function(input, output){
  offset<-read_csv("offset mechanisms.csv")
  
     # Create reactive object state_candy that changes based on state_select widget selection
-    offset_amount <- reactive({
-      offset %>%
-        filter(Method == input$method_select) %>%
-        select(Amount, Hours) %>% 
-        mutate(Offset== Amount*emission)
+#    offset_amount <- reactive({
+#      offset %>%
+#        filter(Method == input$method_select) %>%
+#        select(Amount, Hours) %>% 
+#        mutate(Offset== Amount*emission)
       
-    })
+#    })
     
     # Render a reactive table that uses state_candy reactive object (and note the parentheses after state_candy -- do that if calling a reactive object!)
-    output$offset_table <- renderValueBox({
+    output$offset_table_1 <- renderUI({
       
       total_emission <- input$chicken*ingredient_final$meat_chicken + 
         input$beef*ingredient_final$meat_cattle+
@@ -364,45 +388,53 @@ server <- function(input, output){
         (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
         100 * ingredient_final$wheat_rye_bread
       
-      if (req(input$offset_select) == "Walk") {
         temp_df <- offset %>% 
-          filter(Method == "Walk") %>% 
-          select(Hours)
+          filter(Method == input$offset_select_1)
         
-        temp_para <- as.numeric(temp_df$Hours)
+        temp_para <- as.numeric(temp_df$Value)
         
-        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), "B to 1Hr"), 
-                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), "burritos, 1 hour of walking instead of driving is needed."), icon = icon("walking"), color = "yellow", width = NULL)
-      } else if (req(input$offset_select) == "Tree") {
-        temp_df <- offset %>% 
-          filter(Method == "Tree") %>% 
-          select(Amount)
-        
-        temp_para <- as.numeric(temp_df$Amount)
-        
-        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), "B to 1S"), 
-                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), "burritos, 1 tree need to be grown."), icon = icon("tree"), color = "green", width = NULL)
-        
-      } else if (req(input$offset_select) == "Bike") {
-        temp_df <- offset %>% 
-          filter(Method == "Bike") %>% 
-          select(Hours)
-        
-        temp_para <- as.numeric(temp_df$Hours)
-        
-        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), "B to 1Hr"), 
-                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), "burritos, 1 hour of biking instead of driving is needed."), icon = icon("bicycle"), color = "blue", width = NULL)
+        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
+                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_2)), icon = icon(as.character(temp_df$Method)), color = "yellow", width = 12)
+    })
+    
+    output$offset_table_2 <- renderUI({
       
-      } else {
-        temp_df <- offset %>% 
-          filter(Method == "Waste") %>% 
-          select(Amount)
-        
-        temp_para <- as.numeric(temp_df$Amount)
-        
-        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), "B to 1B"), 
-                 paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), "burritos, 1 bag of trash need to be recycled instead of landfilled."), icon = icon("recycle"), color = "orange", width = NULL)
-      }
+      total_emission <- input$chicken*ingredient_final$meat_chicken + 
+        input$beef*ingredient_final$meat_cattle+
+        input$pork*ingredient_final$meat_pig+
+        input$vegetables*ingredient_final$other_vegetables+
+        input$rice*ingredient_final$rice_paddy+
+        input$cheese*ingredient_final$cheese+
+        (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
+        100 * ingredient_final$wheat_rye_bread
+      
+      temp_df <- offset %>% 
+        filter(Method == input$offset_select_2)
+      
+      temp_para <- as.numeric(temp_df$Value)
+      
+      valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
+               paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_2)), icon = icon(as.character(temp_df$Method)), color = "green", width = 12)
+    })
+    
+    output$offset_table_3 <- renderUI({
+      
+      total_emission <- input$chicken*ingredient_final$meat_chicken + 
+        input$beef*ingredient_final$meat_cattle+
+        input$pork*ingredient_final$meat_pig+
+        input$vegetables*ingredient_final$other_vegetables+
+        input$rice*ingredient_final$rice_paddy+
+        input$cheese*ingredient_final$cheese+
+        (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
+        100 * ingredient_final$wheat_rye_bread
+      
+      temp_df <- offset %>% 
+        filter(Method == input$offset_select_3)
+      
+      temp_para <- as.numeric(temp_df$Value)
+      
+      valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
+               paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_2)), icon = icon(as.character(temp_df$Method)), color = "blue", width = 12)
     })
   
   #output for offset calculator
