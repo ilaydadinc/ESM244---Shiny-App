@@ -414,7 +414,7 @@ server <- function(input, output){
         
         temp_para <- as.numeric(temp_df$Value)
         
-        valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
+        valueBox(paste(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
                  paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_2)), icon = icon(as.character(temp_df$Method)), color = "yellow", width = 12)
     })
     
@@ -434,7 +434,7 @@ server <- function(input, output){
       
       temp_para <- as.numeric(temp_df$Value)
       
-      valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
+      valueBox(paste(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
                paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_2)), icon = icon(as.character(temp_df$Method)), color = "green", width = 12)
     })
     
@@ -454,7 +454,7 @@ server <- function(input, output){
       
       temp_para <- as.numeric(temp_df$Value)
       
-      valueBox(paste0(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
+      valueBox(paste(round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_1)), 
                paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_2)), icon = icon(as.character(temp_df$Method)), color = "blue", width = 12)
     })
   
