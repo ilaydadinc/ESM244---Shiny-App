@@ -161,13 +161,13 @@ ui <- navbarPage(
                           )),
                  tabPanel("Get your burrito",
                           sidebarLayout(
-                            sidebarPanel("Nearby burritos",
+                            sidebarPanel(h2("Nearby burritos"),
+                                         "Enter your zipcode to find a burrito establishment close to you",
                                          textInput("postalcode",
-                                                      label = "Enter your zipcode",
+                                                      label = "",
                                                       value = "e.g. 93117"
                                          )),
-                            mainPanel("Nearby Burritos",
-                                      leafletOutput("burr_map"))
+                            mainPanel(leafletOutput("burr_map", width = 700, height = 500))
                           )),
                  tabPanel("References", style = "font-size:25px",align="left",
                             shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
@@ -434,9 +434,11 @@ server <- function(input, output){
       addCircles(data = local_burritos(),
       lat = ~latitude,
       lng= ~longitude,
-      radius =1,
+      radius = 5,
       fillOpacity = 0.8,
-      popup = ~name)
+      popup = ~name,
+      color = "#D46F10FF") %>% 
+      fitBounds(~min(longitude), ~min(latitude), ~max(longitude), ~max(latitude))
   })
 
 #table with information
