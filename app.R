@@ -142,7 +142,7 @@ ui <- navbarPage(
                                          sliderInput(inputId = "salsa", #change widget here
                                                      label = "Salsa (grams)",
                                                      min = 0,
-                                                     max = 50,
+                                                     max = 60,
                                                      0,
                                                      step = 1,
                                                      ticks = FALSE)
