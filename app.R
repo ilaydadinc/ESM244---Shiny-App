@@ -194,10 +194,10 @@ ui <- navbarPage(
                  tabPanel("Get your burrito", icon = icon("map-marked-alt"),
                           sidebarLayout(
                             sidebarPanel(h2("Nearby burritos"),
-                                         "Enter your zipcode to find a burrito establishment close to you",
+                                         "Enter the first three digits of your zipcode to find a burrito establishment close to you",
                                          textInput("postalcode",
                                                       label = "",
-                                                      value = "e.g. 93117"
+                                                      value = "e.g. 931"
                                          )),
                             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
                           )),
@@ -313,6 +313,17 @@ burritos <- read_csv("tacos_burritos.csv") %>%
   filter(latitude != "NA" | longitude != "NA") %>% 
   filter(longitude < 0)
 
+##add zeros to the zipcode column and then make a new column with just the first three digits
+burritos_clean <- burritos %>%
+  mutate(
+    postal_code = case_when(
+      str_length(postal_code) == 4 ~ paste("0",postal_code, sep = ""), #add zeros to 4 digit zipcodes
+      TRUE ~ postal_code
+    )
+  ) %>% 
+  mutate(
+    zip = paste(substr(postal_code,1,3)) #create new column with only the first three
+  )
 
 #note: we may have to filter out the messy zipcodes too
 
@@ -325,7 +336,7 @@ server <- function(input, output){
   #output for burrito builder
   output$emission_contri <- renderPlot({
     
-    plot_data <- data.frame(ingredient = c("Chicken", "Beef", "Pork", "Vegetables", "Rice", "Cheese", "Salsa", "Bread"),
+    plot_data <- data.frame(ingredient = c("Chicken", "Beef", "Pork", "Vegetables", "Rice", "Cheese", "Salsa", "Tortilla"),
                        emission = c(input$chicken*ingredient_final$meat_chicken, 
                                     input$beef*ingredient_final$meat_cattle,
                                     input$pork*ingredient_final$meat_pig,
@@ -447,24 +458,20 @@ server <- function(input, output){
                paste("After eating", round(1/(total_emission*temp_para/1e6), digits = 1), as.character(temp_df$text_2)), icon = icon(as.character(temp_df$Method)), color = "blue", width = 12)
     })
   
-  #output for offset calculator
-  output$diamond_plot <- renderPlot({
+
     
-    ggplot(data = diamonds, aes(x = carat, y = price))+
-      geom_point(aes(color = clarity))
-    
-  })
+
   ### TAB 4 ###
   #reactive df for burrito map
  local_burritos <- reactive({
-   burritos %>%
-   filter(postal_code == input$postalcode)
+   burritos_clean %>%
+   filter(zip == input$postalcode)
  })
   
   #output for burrito map
   
   output$burr_map <-renderLeaflet({
-    leaflet(burritos) %>%
+    leaflet(burritos_clean) %>%
     #addCircles(lng = ~longitude, lat = ~latitude) %>%
     addTiles() %>%
       fitBounds(~min(longitude), ~min(latitude), ~max(longitude), ~max(latitude))

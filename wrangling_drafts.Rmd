@@ -1,0 +1,46 @@
+---
+title: "stringr test"
+author: "Madeline Berger"
+date: "3/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(stringr)
+
+burritos <- read_csv("tacos_burritos.csv") %>% 
+  filter(str_detect(menus.name, pattern = "Burrito")) %>%  #get rid of the tacos
+  filter(!str_detect(categories, pattern = "Fast Food")) %>% #no fast food because we are classy
+  select(address, 
+         categories, 
+         city, 
+         country, 
+         cuisines, 
+         latitude, 
+         longitude, 
+         menus.description, 
+         menus.name, 
+         name, 
+         postalCode,
+         province) %>% 
+  clean_names() %>% 
+  filter(latitude != "NA" | longitude != "NA") %>% 
+  filter(longitude < 0)
+
+
+burritos_clean <- burritos %>%
+  mutate(
+    postal_code = case_when(
+      str_length(postal_code) == 4 ~ paste("0",postal_code, sep = ""), #add zeros to 4 digit zipcodes
+      TRUE ~ postal_code
+                              )
+      ) %>% 
+  mutate(
+    zip = paste(substr(postal_code,1,3)) #create new column with only the first three
+  )
+
+
+
+```
