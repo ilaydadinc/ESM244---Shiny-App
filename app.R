@@ -374,6 +374,7 @@ server <- function(input, output){
       input$beef*ingredient_final$meat_cattle+
       input$pork*ingredient_final$meat_pig+
       input$vegetables*ingredient_final$other_vegetables+
+      input$fish*ingredient_final$fish_farmed+
       input$rice*ingredient_final$rice_paddy+
       input$cheese*ingredient_final$cheese+
       (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
@@ -411,6 +412,7 @@ server <- function(input, output){
         input$beef*ingredient_final$meat_cattle+
         input$pork*ingredient_final$meat_pig+
         input$vegetables*ingredient_final$other_vegetables+
+        input$fish*ingredient_final$fish_farmed+
         input$rice*ingredient_final$rice_paddy+
         input$cheese*ingredient_final$cheese+
         (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
@@ -431,6 +433,7 @@ server <- function(input, output){
         input$beef*ingredient_final$meat_cattle+
         input$pork*ingredient_final$meat_pig+
         input$vegetables*ingredient_final$other_vegetables+
+        input$fish*ingredient_final$fish_farmed+
         input$rice*ingredient_final$rice_paddy+
         input$cheese*ingredient_final$cheese+
         (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
@@ -451,6 +454,7 @@ server <- function(input, output){
         input$beef*ingredient_final$meat_cattle+
         input$pork*ingredient_final$meat_pig+
         input$vegetables*ingredient_final$other_vegetables+
+        input$fish*ingredient_final$fish_farmed+
         input$rice*ingredient_final$rice_paddy+
         input$cheese*ingredient_final$cheese+
         (0.7 * input$salsa*ingredient_final$tomatoes + 0.3 * input$salsa*ingredient_final$onions_leeks)+
