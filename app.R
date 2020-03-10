@@ -168,13 +168,32 @@ ui <- navbarPage(
                             mainPanel("Nearby Burritos",
                                       leafletOutput("burr_map"))
                           )),
-                 tabPanel("References",
-                            shiny::HTML("<b> REFERENCES </b> <br> [1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
-
-[2]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
-<https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference>
+                 tabPanel("References", style = "font-size:25px",align="left",
+                            shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
 <br>
-[3]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from <https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos>  "))
+[2]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
+https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference
+
+<br>
+<br>
+[3]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos 
+
+ <br>
+ <br>
+[4] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.
+
+<br>
+<br>
+[5] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)
+
+<br>
+<br>
+[6] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)
+
+<br>
+<br>
+[7] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)
+          </h4>                              "))
                           
                  
                  
