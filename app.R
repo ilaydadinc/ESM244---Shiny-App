@@ -110,13 +110,13 @@ ui <- navbarPage(
                                                      0,
                                                      step = 10,
                                                      ticks = FALSE),
-                                         #sliderInput(inputId = "fish", #change widget here
-                                          #           label = "Fish (grams)",
-                                           #          min = 0,
-                                            #         max = 200,
-                                             #        0,
-                                              #       step = 10,
-                                               #      ticks = FALSE),
+                                         sliderInput(inputId = "fish", #change widget here
+                                                     label = "Fish (grams)",
+                                                     min = 0,
+                                                     max = 200,
+                                                     0,
+                                                     step = 10,
+                                                     ticks = FALSE),
                                          sliderInput(inputId = "vegetables", #change widget here
                                                      label = "Veggies (grams)",
                                                      min = 0,
@@ -245,6 +245,12 @@ veggie_raw<-read_csv("veggies.csv")
 meat_raw<-read_csv("meat.csv")
 
 
+#Create a normalization factor using beef
+beef_percent_n <- 0.26
+beef_cf_kg_n<- 0.1/beef_percent_n
+beef_ef_n <- 99.5/beef_cf_kg_n
+n_factor <- 11.8739/beef_ef_n #normalization factor of two dataframes!
+
 #Data manipulation - Burrito Builder
 cheese_percent <- 0.249
 cheese_cf_kg<- 0.1/cheese_percent #ef/cheese_cf_kg => ef(kg CO2e/kg) 
@@ -266,9 +272,9 @@ veggie_clean <- veggie_raw %>%
   clean_names() %>% 
   filter(product %in% c("Wheat & Rye (Bread)", "Tomatoes", "Onions & Leeks", "Other Vegetables", "Cheese", "Fish (farmed)")) %>%
   mutate(emission_factor = case_when(
-    product == "Wheat & Rye (Bread)" ~ median/bread_cf_kg,
-    product == "Cheese" ~ median/cheese_cf_kg,
-    product == "Fish (farmed)" ~ median/fish_cf_kg,
+    product == "Wheat & Rye (Bread)" ~ n_factor * median/bread_cf_kg,
+    product == "Cheese" ~ n_factor * median/cheese_cf_kg,
+    product == "Fish (farmed)" ~ n_factor * median/fish_cf_kg,
     TRUE ~ median
   )) %>% 
   rename(ingredient = product) %>% 
@@ -336,10 +342,11 @@ server <- function(input, output){
   #output for burrito builder
   output$emission_contri <- renderPlot({
     
-    plot_data <- data.frame(ingredient = c("Chicken", "Beef", "Pork", "Vegetables", "Rice", "Cheese", "Salsa", "Tortilla"),
+    plot_data <- data.frame(ingredient = c("Chicken", "Beef", "Pork", "Fish", "Vegetables", "Rice", "Cheese", "Salsa", "Tortilla"),
                        emission = c(input$chicken*ingredient_final$meat_chicken, 
                                     input$beef*ingredient_final$meat_cattle,
                                     input$pork*ingredient_final$meat_pig,
+                                    input$fish*ingredient_final$fish_farmed,
                                     input$vegetables*ingredient_final$other_vegetables,
                                     input$rice*ingredient_final$rice_paddy,
                                     input$cheese*ingredient_final$cheese,
