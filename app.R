@@ -461,12 +461,16 @@ server <- function(input, output){
 
     
 
-  ### TAB 4 ###
+  #### TAB 4 ####
   #reactive df for burrito map
  local_burritos <- reactive({
    burritos_clean %>%
    filter(zip == input$postalcode)
  })
+    
+  #create a burrito icon for map
+    
+burr_icon <- makeIcon("burr_icon.png", iconWidth = 20, iconHeight = 35)
   
   #output for burrito map
   
