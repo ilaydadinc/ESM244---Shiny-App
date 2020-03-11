@@ -204,133 +204,134 @@ ui <- navbarPage(
                                     value = "e.g. 931"
                                     )
                           ),
-             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
+             mainPanel(leafletOutput("burr_map", width = 700, height = 500),
+                       tableOutput("burrito_table")) 
              )
            ),
-  tabPanel("About", icon = icon("users"), 
-           img(src="image3.jpg", height="140%",width="100%",style = 'position: absolute; opacity: 0.2;'),
-  
-  #fluidRow(
-   # shiny::HTML("<br><br><center> 
-                                          #  <h1>About Guilt-free Burritos</h1> 
-                            
-                                          #  </center>
-                                      
-                                          #  ")),
-  fluidRow(
-    div( div(
-      tags$img(src = "environment.png", 
-               width = "100px", height = "100px")
-    ),
-      align = "center",
-        tags$span(h3("How did we come up with this idea?"), 
-                  style = "font-weight:bold"
-        ))
-  ),
-  fluidRow(
-    column(1),
-    column(10,
-           tags$p(h5("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
-    ),
-    column(4)
-  ),
-  fluidRow(
-    column(1),
-    column(10,
-           # Panel for Background on Data
-           div(class="panel panel-default",
-               div(class="panel-body",  
-                   tags$img(src = "dashboard.png", 
-                            width = "100px", height = "100px"), align = "center",
-                   tags$div( 
-                    div( align = "center", 
-                                  h3("Where does the data come from?")
-                             )
-                   ),
-                   tags$p(h5("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
-                   tags$ul(
-                     tags$li(h6("Any career movement within 30 days of a previous career movement was ignored. Although this represents a small percent of movement, these job transitions may have reflected data entry errors and may have skewed probabilities in jobs with a small number of incumbents.")),
-                     tags$li(h6("Minor demotions were retained in the data to reflect deliberate career choices; however, demotions of a significant percent were excluded."))
-                   )
-               )
-           ) # Closes div panel
-    ), # Closes column
-    column(2)
-  ),
-  # TEAM BIO
-  fluidRow(
-    column(1),
-    column(10,
-           shiny::HTML("<br><center> <h2>ABOUT THE TEAM</h2> </center><br>")
-    ),
-    column(2)
-  ),
-  
-  fluidRow(
-    column(1),
-    
-    # Marc
-    column(3,
-           div(class="panel panel-default", 
-               div(class="panel-body",  width = "400px",
-                   align = "center",
-                   div(
-                     tags$img(src = "avatar.jpeg", 
-                              width = "100px", height = "100px",class="img-circle")
-                   ),
-                   div(
-                     tags$h5("Maddie Berger"),
-                     tags$h6( tags$i("Visionary & Project Lead"))
-                   ),
-                   div(
-                     tags$h5("Maddie Berger")
-                    
-                   )
-                  
-               )
-           )
-    ),
-    # George
-    column(3,
-           div(class="panel panel-default",
-               div(class="panel-body",  width = "600px", 
-                   align = "center",
-                   div(
-                     tags$img(src = "ilayda.jpg", 
-                              width = "100px", height = "100px",class="img-circle")
-                   ),
-                   div(
-                     tags$h5("Ilayda Dinc"),
-                     tags$h6( tags$i("Data Scientist & Programmer"))
-                   ),
-                   div(
-                     tags$h5("Maddie Berger")
-                   )
-               )
-           )
-          ),
-    # Angela
-    column(3,
-           div(class="panel panel-default",
-               div(class="panel-body",  width = "600px", 
-                   align = "center",
-                   div(
-                     tags$img(src = "woman.svg", 
-                              width = "100px", height = "100px")),
-                   div(
-                     tags$h5("Ted Jiang"),
-                     tags$h6( tags$i("Writer"))
-                   ),
-                   div(
-                     tags$h5("Maddie Berger")
-                   )
-               )
-           ) ),
-    column(1)
-
-     ),
-  fluidRow(style = "height:200px;")
-),  # Closes About tab
+#   tabPanel("About", icon = icon("users"), 
+#            img(src="image3.jpg", height="140%",width="100%",style = 'position: absolute; opacity: 0.2;'),
+#   
+#   #fluidRow(
+#    # shiny::HTML("<br><br><center> 
+#                                           #  <h1>About Guilt-free Burritos</h1> 
+#                             
+#                                           #  </center>
+#                                       
+#                                           #  ")),
+#   fluidRow(
+#     div( div(
+#       tags$img(src = "environment.png", 
+#                width = "100px", height = "100px")
+#     ),
+#       align = "center",
+#         tags$span(h3("How did we come up with this idea?"), 
+#                   style = "font-weight:bold"
+#         ))
+#   ),
+#   fluidRow(
+#     column(1),
+#     column(10,
+#            tags$p(h5("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
+#     ),
+#     column(4)
+#   ),
+#   fluidRow(
+#     column(1),
+#     column(10,
+#            # Panel for Background on Data
+#            div(class="panel panel-default",
+#                div(class="panel-body",  
+#                    tags$img(src = "dashboard.png", 
+#                             width = "100px", height = "100px"), align = "center",
+#                    tags$div( 
+#                     div( align = "center", 
+#                                   h3("Where does the data come from?")
+#                              )
+#                    ),
+#                    tags$p(h5("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
+#                    tags$ul(
+#                      tags$li(h6("Any career movement within 30 days of a previous career movement was ignored. Although this represents a small percent of movement, these job transitions may have reflected data entry errors and may have skewed probabilities in jobs with a small number of incumbents.")),
+#                      tags$li(h6("Minor demotions were retained in the data to reflect deliberate career choices; however, demotions of a significant percent were excluded."))
+#                    )
+#                )
+#            ) # Closes div panel
+#     ), # Closes column
+#     column(2)
+#   ),
+#   # TEAM BIO
+#   fluidRow(
+#     column(1),
+#     column(10,
+#            shiny::HTML("<br><center> <h2>ABOUT THE TEAM</h2> </center><br>")
+#     ),
+#     column(2)
+#   ),
+#   
+#   fluidRow(
+#     column(1),
+#     
+#     # Marc
+#     column(3,
+#            div(class="panel panel-default", 
+#                div(class="panel-body",  width = "400px",
+#                    align = "center",
+#                    div(
+#                      tags$img(src = "avatar.jpeg", 
+#                               width = "100px", height = "100px",class="img-circle")
+#                    ),
+#                    div(
+#                      tags$h5("Maddie Berger"),
+#                      tags$h6( tags$i("Visionary & Project Lead"))
+#                    ),
+#                    div(
+#                      tags$h5("Maddie Berger")
+#                     
+#                    )
+#                   
+#                )
+#            )
+#     ),
+#     # George
+#     column(3,
+#            div(class="panel panel-default",
+#                div(class="panel-body",  width = "600px", 
+#                    align = "center",
+#                    div(
+#                      tags$img(src = "ilayda.jpg", 
+#                               width = "100px", height = "100px",class="img-circle")
+#                    ),
+#                    div(
+#                      tags$h5("Ilayda Dinc"),
+#                      tags$h6( tags$i("Data Scientist & Programmer"))
+#                    ),
+#                    div(
+#                      tags$h5("Maddie Berger")
+#                    )
+#                )
+#            )
+#           ),
+#     # Angela
+#     column(3,
+#            div(class="panel panel-default",
+#                div(class="panel-body",  width = "600px", 
+#                    align = "center",
+#                    div(
+#                      tags$img(src = "woman.svg", 
+#                               width = "100px", height = "100px")),
+#                    div(
+#                      tags$h5("Ted Jiang"),
+#                      tags$h6( tags$i("Writer"))
+#                    ),
+#                    div(
+#                      tags$h5("Maddie Berger")
+#                    )
+#                )
+#            ) ),
+#     column(1)
+# 
+#      ),
+#   fluidRow(style = "height:200px;")
+# ),  # Closes About tab
                  tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
                             shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
 <br>
@@ -639,6 +640,23 @@ server <- function(input, output){
   })
 
 #table with information
+
+kable_data_map <- reactive({
+    burritos_clean %>% 
+      filter(zip == input$postalcode) %>% 
+      select(name, menus_name, menus_description)
+  }) 
+
+output$burrito_table <- renderTable({
+  
+  kable(kable_data_map(), col.names = c("Burrito Details")) %>%
+    kable_styling(
+      font_size = 20,
+      bootstrap_options = c("striped", "condensed")
+    ) 
+})
+
+
   
 }
 
