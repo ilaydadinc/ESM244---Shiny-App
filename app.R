@@ -213,7 +213,7 @@ ui <- navbarPage(
    
    fluidRow(
      shiny::HTML("<br><center> 
-                                             <h1>About Guilt-free Burritos</h1> 
+                                             <h1>GUILT-FREE BURRITOS</h1> 
                              
                                              </center>
                                        
@@ -230,16 +230,16 @@ ui <- navbarPage(
    ),
    fluidRow(
      column(1),
-     column(10,
+     column(10, align = "center",
             tags$p(h4("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
      ),
-     column(4)
+     column(1)
    ),
    fluidRow(
      column(1),
      column(10,
 #             Panel for Background on Data
-            div(class="panel panel-info",
+            div(class="panel panel-success",
                 div(class="panel-body",  
                     tags$img(src = "dashboard.png", 
                              width = "100px", height = "100px"), align = "center",
@@ -256,7 +256,7 @@ ui <- navbarPage(
                 )
             ) # Closes div panel
      ), # Closes column
-     column(2)
+     column(1)
    ),
    # TEAM BIO
    fluidRow(
@@ -264,71 +264,70 @@ ui <- navbarPage(
      column(10,
             shiny::HTML("<center> <h1>ABOUT THE TEAM</h1> </center><br>")
      ),
-     column(2)
+     column(1)
    ),
    
    fluidRow(
-     column(1),
+     column(3),
      
      # Marc
-     column(3,
-            div(class="panel panel-success", 
-                div(class="panel-body",  width = "400px",
+     column(2,
+           #div(class="panel panel-success", align="left",
+               # div(class="panel-body",  width = "400px",
                     align = "center",
                     div(
                       tags$img(src = "avatar.jpeg", 
-                               width = "100px", height = "100px",class="img-circle")
+                               width = "120px", height = "120px",class="img-circle")
                     ),
                     div(
-                      tags$h5("Maddie Berger"),
-                      tags$h6( tags$i("Visionary & Project Lead"))
+                      tags$h5("Maddie"),
+                      tags$h6( tags$i("'Veggie Burrito'"))
                     ),
                     div(
-                      tags$h5("Maddie Berger")
+                      tags$h5("Berger")
                      
                     )
                    
-                )
-            )
+               # )
+           # )
      ),
+     
 #     # George
-     column(3,
-            div(class="panel panel-success",
-                div(class="panel-body",  width = "600px", 
+     column(2, 
+            #div(class="panel panel-success",align="center",
+                #div(class="panel-body",  width = "600px", 
                     align = "center",
                     div(
                       tags$img(src = "ilayda.jpg", 
-                               width = "100px", height = "100px",class="img-circle")
+                               width = "120px", height = "120px",class="img-circle")
                     ),
                     div(
-                      tags$h5("Ilayda Dinc"),
-                      tags$h6( tags$i("Data Scientist & Programmer"))
+                      tags$h5("Ilayda"),
+                      tags$h6( tags$i("'Queen Burrito'"))
                     ),
                     div(
-                      tags$h5("Maddie Berger")
+                      tags$h5("Dinc")
                     )
-                )
-            )
+               # )
+            #)
            ),
      # Angela
-     column(3,
-            div(class="panel panel-success",
-                div(class="panel-body",  width = "600px", 
-                    align = "center",
+     column(2,
+            #div(class="panel panel-success",align="right",
+               # div(class="panel-body",  width = "600px", 
+                   align = "center",
                     div(
                       tags$img(src = "ted.jpg", 
-                               width = "100px", height = "100px",class="img-circle")),
+                               width = "120px", height = "120px",class="img-circle")),
                     div(
-                      tags$h5("Ted Jiang"),
-                      tags$h6( tags$i("Writer"))
+                      tags$h5("Ted"),
+                      tags$h6( tags$i("'Breakfast Burrito'"))
                     ),
                     div(
-                      tags$h5("Maddie Berger")
+                      tags$h5("Jiang")
                     )
                 )
-            ) ),
-     column(1)
- 
+          #  ) )
       ),
    fluidRow(style = "height:200px;")
  ),  # Closes About tab
