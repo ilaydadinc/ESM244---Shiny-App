@@ -46,7 +46,7 @@ ui <- navbarPage(
                           fluidRow(
                           
                             column(12,
-                                   shiny::HTML("<center><h4>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? <br>This app is here to help you to build your burrito and see your environmental impact in the form of greenhouse gas emissions.</h4></center>")
+                                   shiny::HTML("<center><h4>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? <br><br>This app is here to help you to build your burrito and see your environmental impact<br> in the form of greenhouse gas emissions.</h4></center>")
                             ),
                             column(4)
                             ),
@@ -60,7 +60,7 @@ ui <- navbarPage(
                             column(2),
                             column(12,
                                    shiny::HTML("<br><br><center> <h1>How does it work?</h1> </center><br>"),
-                                   shiny::HTML("<center><h4> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions according to the your choices.<br> Then, if you keep exploring our app and you will see how you can offset these emissions by making small changes to your life choices in the 'Offset Calculator'tab.</h4></center>")
+                                   shiny::HTML("<center><h4> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions<br>according to the your choices.<br><br> Then, if you keep exploring our app and you will see how you can offset these emissions<br>by making small changes to your life choices in the 'Offset Calculator'tab.</h4></center>")
                             ),
                             column(2)
                           ),
