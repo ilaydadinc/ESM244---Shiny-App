@@ -202,7 +202,7 @@ ui <- navbarPage(
                             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
                           )),
   tabPanel("About", icon = icon("users"), 
-           img(src="image3.jpg", height="120%",width="100%",style = 'position: absolute; opacity: 0.2;'),
+           img(src="image3.jpg", height="140%",width="100%",style = 'position: absolute; opacity: 0.2;'),
   
   fluidRow(
     shiny::HTML("<br><br><center> 
