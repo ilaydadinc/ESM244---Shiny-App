@@ -27,43 +27,38 @@ library(paletteer)
 #Create 'ui' = "User Interface"
 
 ui <- navbarPage(
-  
-  header = tagList(
-    useShinydashboard()
-  ),
-  
-  
-  
-  
+  header = tagList(useShinydashboard()),
   "Guilt-free Burritos", 
   theme = shinytheme("flatly"),
-                 tabPanel("Home", icon = icon("home"),
-                          h1("BURRITO BUILDER", style = "font-size:40px",align="center"),
-                          p("The word 'burrito' means 'little donkey', in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:20px",align="center"),
-                          img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;'),
-                          tags$hr(),
-                          # WHAT
-                          fluidRow(
-                          
-                            column(12,
-                                   shiny::HTML("<center><h4>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? <br><br>This app is here to help you to build your burrito and see your environmental impact<br> in the form of greenhouse gas emissions.</h4></center>")
+  tabPanel("Home",
+           icon = icon("home"),
+           h1("BURRITO BUILDER", 
+              style = "font-size:40px",
+              align="center"
+              ),
+           p("The word 'burrito' means 'little donkey', in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:20px",align="center"
+             ),
+           img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;'
+               ),
+           tags$hr(),
+           # WHAT
+           fluidRow(column(12,shiny::HTML("<center><h4>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? <br><br>This app is here to help you to build your burrito and see your environmental impact<br> in the form of greenhouse gas emissions.</h4></center>")
                             ),
-                            column(4)
-                            ),
-                          fluidRow(
-                            style = "height:10px;"
-                            ),
-                          # PAGE BREAK
-                          tags$hr(),
-                          # WHERE
-                          fluidRow(
-                            column(2),
-                            column(12,
-                                   shiny::HTML("<br><br><center> <h1>How does it work?</h1> </center><br>"),
-                                   shiny::HTML("<center><h4> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions<br>according to the your choices.<br><br> Then, if you keep exploring our app and you will see how you can offset these emissions<br>by making small changes to your life choices in the 'Offset Calculator'tab.</h4></center>")
-                            ),
-                            column(2)
-                          ),
+                    column(4
+                           )
+                    ),
+           fluidRow(style = "height:10px;"
+                    ),
+           # PAGE BREAK
+           tags$hr(),
+           # WHERE
+           fluidRow(column(2),
+                    column(12,
+                           shiny::HTML("<br><br><center> <h1>How does it work?</h1> </center><br>"),
+                           shiny::HTML("<center><h4> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions<br>according to the your choices.<br><br> Then, if you keep exploring our app and you will see how you can offset these emissions<br>by making small changes to your life choices in the 'Offset Calculator'tab.</h4></center>")
+                           ),
+                    column(2)
+                    ),
                           fluidRow(
                             style = "height:50px;"),
                           # PAGE BREAK
@@ -75,132 +70,143 @@ ui <- navbarPage(
                                    shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? <br> Don’t worry we got you!
 
 </h1> </center><br>")
-                            ),
+                                   ),
                             column(2)
-                          ),
+                            ),
                           fluidRow(
                             style = "height:50px;"),
                           # PAGE BREAK
                           tags$hr()
                  ), # Closes the first tabPanel called "Home"
-                 
-      
-                 tabPanel("Burrito Builder!",icon = icon("utensils"),
-                          sidebarLayout(
-                            sidebarPanel(h1("Choose your ingredients"),
-                                         h3("Start with a base"),
-                                         sliderInput(inputId = "chicken", #change widget here
-                                                     label = "Chicken (grams)",
-                                                     min = 0,
-                                                     max = 200,
-                                                     0,
-                                                     step = 10,
-                                                     ticks = FALSE),
-                                         sliderInput(inputId = "beef", #change widget here
-                                                     label = "Beef (grams)",
-                                                     min = 0,
-                                                     max = 200,
-                                                     0,
-                                                     step = 10,
-                                                     ticks = FALSE),
-                                         sliderInput(inputId = "pork", #change widget here
-                                                     label = "Pork (grams)",
-                                                     min = 0,
-                                                     max = 200,
-                                                     0,
-                                                     step = 10,
-                                                     ticks = FALSE),
-                                         sliderInput(inputId = "fish", #change widget here
-                                                     label = "Fish (grams)",
-                                                     min = 0,
-                                                     max = 200,
-                                                     0,
-                                                     step = 10,
-                                                     ticks = FALSE),
-                                         sliderInput(inputId = "vegetables", #change widget here
-                                                     label = "Veggies (grams)",
-                                                     min = 0,
-                                                     max = 200,
-                                                     0,
-                                                     step = 1,
-                                                     ticks = FALSE),
-                                         h3("Add some other stuff"),
-                                         sliderInput(inputId = "rice", #change widget here
-                                                     label = "Rice (grams)",
-                                                     min = 0,
-                                                     max = 60,
-                                                     0,
-                                                     step = 10,
-                                                     ticks = FALSE),
-                                         sliderInput(inputId = "cheese", #change widget here
-                                                     label = "Cheese (grams)",
-                                                     min = 0,
-                                                     max = 60,
-                                                     0,
-                                                     step = 1,
-                                                     ticks = FALSE),
-                                         sliderInput(inputId = "salsa", #change widget here
-                                                     label = "Salsa (grams)",
-                                                     min = 0,
-                                                     max = 60,
-                                                     0,
-                                                     step = 1,
-                                                     ticks = FALSE)
-                                         ),
-                            mainPanel(h1("Greenhouse Gas Emissions by Ingredient", style = "font-size:25px",align="center"),
-                                      plotOutput(outputId = "emission_contri"),
-                                      HTML("<br><br><br>"),
-                                      htmlOutput("emission_table"),
-                                      HTML(" Explanation here"))
-                        
-            
-                          )),
-                 tabPanel("Offset Calculator",icon = icon("calculator"),
-                          sidebarLayout(
-                            sidebarPanel(
-                                         selectInput(inputId = "offset_select_1",
-                                                     label = "What is your first option to offset your Greenhouse gas emissions?",
-                                                     choices = c("Planting Trees" = "tree",
-                                                                 "Biking instead of Driving" = "bicycle",
-                                                                 "Walking instead of Driving" = "walking",
-                                                                 "Recyling instead of Landfilling" = "recycle",
-                                                                 "Skating instead of Driving" = "snowboarding",
-                                                                 "Switching from Incandescent Lamps to LED" = "lightbulb")
-                                                     ),
-                                         selectInput(inputId = "offset_select_2",
-                                                     label = "What is your second option to offset your Greenhouse gas emissions?",
-                                                     choices = c("Planting Trees" = "tree",
-                                                                 "Biking instead of Driving" = "bicycle",
-                                                                 "Walking instead of Driving" = "walking",
-                                                                 "Recyling instead of Landfilling" = "recycle",
-                                                                 "Skating instead of Driving" = "snowboarding",
-                                                                 "Switching from Incandescent Lamps to LED" = "lightbulb")
-                                         ),
-                                         selectInput(inputId = "offset_select_3",
-                                                     label = "What is your third option to offset your Greenhouse gas emissions?",
-                                                     choices = c("Planting Trees" = "tree",
-                                                                 "Biking instead of Driving" = "bicycle",
-                                                                 "Walking instead of Driving" = "walking",
-                                                                 "Recyling instead of Landfilling" = "recycle",
-                                                                 "Skating instead of Driving" = "snowboarding",
-                                                                 "Switching from Incandescent Lamps to LED" = "lightbulb")
-                                         )
-                                         ),
-                            mainPanel(uiOutput("offset_table_1"),
-                                      uiOutput("offset_table_2"),
-                                      uiOutput("offset_table_3"),
-                                      HTML(" Explanation here"))
-                          )),
-                 tabPanel("Get your burrito", icon = icon("map-marked-alt"),
-                          sidebarLayout(
-                            sidebarPanel(h2("Nearby burritos"),
-                                         "Enter the first three digits of your zipcode to find a burrito establishment close to you",
-                                         textInput("postalcode",
-                                                      label = "",
-                                                      value = "e.g. 931"
-                                         )),
-                            mainPanel(leafletOutput("burr_map", width = 700, height = 500))
-                          )),
+  tabPanel("Burrito Builder!",icon = icon("utensils"),
+           sidebarLayout(
+             sidebarPanel(h1("Choose your ingredients"),
+                          h3("Start with a base"),
+                          sliderInput(inputId = "chicken", #change widget here
+                                      label = "Chicken (grams)",
+                                      min = 0,
+                                      max = 200,
+                                      0,
+                                      step = 10,
+                                      ticks = FALSE
+                                      ),
+                          sliderInput(inputId = "beef", #change widget here
+                                      label = "Beef (grams)",
+                                      min = 0,
+                                      max = 200,
+                                      0,
+                                      step = 10,
+                                      ticks = FALSE
+                                      ),
+                          sliderInput(inputId = "pork", #change widget here
+                                      label = "Pork (grams)",
+                                      min = 0,
+                                      max = 200,
+                                      0,
+                                      step = 10,
+                                      ticks = FALSE
+                                      ),
+                          sliderInput(inputId = "fish", #change widget here
+                                      label = "Fish (grams)",
+                                      min = 0,
+                                      max = 200,
+                                      0,
+                                      step = 10,
+                                      ticks = FALSE
+                                      ),
+                          sliderInput(inputId = "vegetables", #change widget here
+                                      label = "Veggies (grams)",
+                                      min = 0,
+                                      max = 200,
+                                      0,
+                                      step = 1,
+                                      ticks = FALSE
+                                      ),
+                          h3("Add some other stuff"),
+                          sliderInput(inputId = "rice", #change widget here
+                                      label = "Rice (grams)",
+                                      min = 0,
+                                      max = 60,
+                                      0,
+                                      step = 10,
+                                      ticks = FALSE
+                                      ),
+                          sliderInput(inputId = "cheese", #change widget here
+                                      label = "Cheese (grams)",
+                                      min = 0,
+                                      max = 60,
+                                      0,
+                                      step = 1,
+                                      ticks = FALSE
+                                      ),
+                          sliderInput(inputId = "salsa", #change widget here
+                                      label = "Salsa (grams)",
+                                      min = 0,
+                                      max = 60,
+                                      0,
+                                      step = 1,
+                                      ticks = FALSE
+                                      )
+                          ),
+             mainPanel(h1("Greenhouse Gas Emissions by Ingredient",
+                          style = "font-size:25px",
+                          align="center"
+                          ),
+                       plotOutput(outputId = "emission_contri"),
+                       HTML("<br><br><br>"),
+                       htmlOutput("emission_table"),
+                       HTML(" Explanation here"))
+             )
+           ),
+  tabPanel("Offset Calculator",icon = icon("calculator"),
+           sidebarLayout(
+             sidebarPanel(h1("Choose your offset options"),
+                          selectInput(inputId = "offset_select_1",
+                                      label = "What is your first option to offset your Greenhouse gas emissions?",
+                                      choices = c("Planting Trees" = "tree",
+                                                  "Biking instead of Driving" = "bicycle",
+                                                  "Walking instead of Driving" = "walking",
+                                                  "Recyling instead of Landfilling" = "recycle",
+                                                  "Skating instead of Driving" = "snowboarding",
+                                                  "Switching from Incandescent Lamps to LED" = "lightbulb")
+                                      ),
+                          selectInput(inputId = "offset_select_2",
+                                      label = "What is your second option to offset your Greenhouse gas emissions?",
+                                      choices = c("Planting Trees" = "tree",
+                                                  "Biking instead of Driving" = "bicycle",
+                                                  "Walking instead of Driving" = "walking",
+                                                  "Recyling instead of Landfilling" = "recycle",
+                                                  "Skating instead of Driving" = "snowboarding",
+                                                  "Switching from Incandescent Lamps to LED" = "lightbulb")
+                                      ),
+                          selectInput(inputId = "offset_select_3",
+                                      label = "What is your third option to offset your Greenhouse gas emissions?",
+                                      choices = c("Planting Trees" = "tree",
+                                                  "Biking instead of Driving" = "bicycle",
+                                                  "Walking instead of Driving" = "walking",
+                                                  "Recyling instead of Landfilling" = "recycle",
+                                                  "Skating instead of Driving" = "snowboarding",
+                                                  "Switching from Incandescent Lamps to LED" = "lightbulb")
+                                      )
+                          ),
+             mainPanel(uiOutput("offset_table_1"),
+                       uiOutput("offset_table_2"),
+                       uiOutput("offset_table_3"),
+                       HTML(" Explanation here"))
+             )
+           ),
+  tabPanel("Get your burrito", icon = icon("map-marked-alt"),
+           sidebarLayout(
+             sidebarPanel(h1("Nearby burritos"),
+                          "Enter the first three digits of your zipcode to find a burrito establishment close to you",
+                          textInput("postalcode",
+                                    label = "",
+                                    value = "e.g. 931"
+                                    )
+                          ),
+             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
+             )
+           ),
   tabPanel("About", icon = icon("users"), 
            img(src="image3.jpg", height="140%",width="100%",style = 'position: absolute; opacity: 0.2;'),
   
