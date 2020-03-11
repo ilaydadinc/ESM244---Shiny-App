@@ -329,9 +329,16 @@ burritos_clean <- burritos %>%
   ) %>% 
   mutate(
     zip = paste(substr(postal_code,1,3)) #create new column with only the first three
+  ) %>% 
+  mutate(
+    popup = paste('<strong>',name,'<strong>',
+                  '<br>',address,
+                  '<br>',city)
   )
 
-#note: we may have to filter out the messy zipcodes too
+##create burrito icon
+
+burr_icon <- makeIcon("burr_icon.svg", iconWidth = 15, iconHeight = 15)
 
 #######################
 
@@ -479,9 +486,7 @@ server <- function(input, output){
    filter(zip == input$postalcode)
  })
     
-  #create a burrito icon for map
-    
-burr_icon <- makeIcon("burr_icon.png", iconWidth = 20, iconHeight = 35)
+
   
   #output for burrito map
   
@@ -495,13 +500,13 @@ burr_icon <- makeIcon("burr_icon.png", iconWidth = 20, iconHeight = 35)
   observe({
     leafletProxy("burr_map", data = local_burritos()) %>%
       clearShapes() %>% 
-      addCircles(data = local_burritos(),
+      addMarkers(data = local_burritos(),
       lat = ~latitude,
       lng= ~longitude,
-      radius = 5,
-      fillOpacity = 0.8,
-      popup = ~name,
-      color = "#D46F10FF") %>% 
+      popup = ~popup,
+      icon = burr_icon) %>% 
+      #radius = 8, #only need these if using circles
+      #opacity = 0.8)
       fitBounds(~min(longitude), ~min(latitude), ~max(longitude), ~max(latitude))
   })
 
