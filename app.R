@@ -155,7 +155,11 @@ ui <- navbarPage(
                        plotOutput(outputId = "emission_contri"),
                        HTML("<br><br><br>"),
                        htmlOutput("emission_table"),
-                       HTML(" Explanation here"))
+                       HTML("<br>"),
+                       HTML("<h4><b>What does this mean?</b></h4>"),
+                       HTML("<h5>Greenhouse gases trap heat in the atmosphere and cause climate change. It is usually expressed in kg carbon dioxide equivalent. Electricity and heat production, industrial production, and agriculture and forestry are the top three contributors to greenhouse gas emissions [1].
+The bar graph shows the breakdown of greenhouse gas emissions by ingredients for your customized burrito. As an example, the result for beef accounts for all the greenhouse gas emissions in its production lifetime, which potentially includes cattle grazing and slaughtering, animal feed growth, storage & transportation, etc.
+The total greenhouse gas emission is also shown under the graph.</h5>"))
              )
            ),
   tabPanel("Offset Calculator",icon = icon("calculator"),
@@ -230,8 +234,8 @@ ui <- navbarPage(
    ),
    fluidRow(
      column(1),
-     column(10, align = "center",
-            tags$p(h4("We are students at UCSB Bren School. We took Life Cycle Assessment(LCA) class together and we wanted to use it as a tool in our daily lives. Globally, agriculture accounts for almost 30% of Greenhouse gas emissions[1]. We all love burritos and we wanted to see how our food preferences impacts the environment.")), 
+     column(10, align = "left",
+            tags$p(h4("We are students at UCSB Bren School. We took Life Cycle Assessment(LCA) class together and we wanted to use it as a tool in our daily lives. Globally, agriculture accounts for almost 30% of Greenhouse gas emissions[2]. We all love burritos and we wanted to see how our food preferences impacts the environment.")), 
      ),
      column(1)
    ),
@@ -250,9 +254,9 @@ ui <- navbarPage(
                     ),
                     #tags$p(h4("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
                     tags$ul(align = "left",
-                      tags$li(h4("The greenhouse gas emission dataset for the ingredients is normalized from two sources. The chicken, beef, pork data comes from the Food and Agriculture Organization of the United Nations [2], and the rest comes from a study published in Science in 2018 [3].")),
-                      tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [4, 5, 6, 7, 8].")),
-                      tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [9]"))
+                      tags$li(h4("The greenhouse gas emission dataset for the ingredients is normalized from two sources. The chicken, beef, pork data comes from the Food and Agriculture Organization of the United Nations [3], and the rest comes from a study published in Science in 2018 [4].")),
+                      tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [5, 6, 7, 8, 9].")),
+                      tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [10]"))
                     )
                 )
             ) # Closes div panel
@@ -333,36 +337,37 @@ ui <- navbarPage(
    fluidRow(style = "height:200px;")
  ),  # Closes About tab
                  tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
-                            shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>
-                            [1] Smith, P., & Gregory, P. J. (2013). Climate change and sustainable food production. Proceedings of the Nutrition Society, 72(1), 21-28.
+                            shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] US EPA. (2020). Global Greenhouse Gas Emissions Data. Retrieved from https://www.epa.gov/ghgemissions/global-greenhouse-gas-emissions-data<br>
+<br>
+[2] Smith, P., & Gregory, P. J. (2013). Climate change and sustainable food production. Proceedings of the Nutrition Society, 72(1), 21-28.
                             <br>
 <br>
-                            [2] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home<br>
+                            [3] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home<br>
 <br>
-[3]Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216 
+[4]Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216 
 
 <br>
 <br>
-[4]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
+[5]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
 https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference
  <br>
  <br>
-[5] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.
+[6] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.
 
 <br>
 <br>
-[6] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)
+[7] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)
 
 <br>
 <br>
-[7] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)
+[8] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)
 
 <br>
 <br>
-[8] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)
+[9] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)
 <br>
 <br> 
-[9]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos
+[10]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos
 </h4>                              "))
                           
                  
