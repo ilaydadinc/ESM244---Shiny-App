@@ -212,7 +212,7 @@ ui <- navbarPage(
             img(src="image3.jpg", height="140%",width="100%",style = 'position: absolute; opacity: 0.2;'),
    
    fluidRow(
-     shiny::HTML("<br><center> 
+     shiny::HTML("<center> 
                                              <h1>GUILT-FREE BURRITOS</h1> 
                              
                                              </center>
@@ -231,7 +231,7 @@ ui <- navbarPage(
    fluidRow(
      column(1),
      column(10, align = "center",
-            tags$p(h4("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
+            tags$p(h4("We are students at UCSB Bren School. We took Life Cycle Assessment(LCA) class together and we wanted to use it as a tool in our daily lives. Globally, agriculture accounts for almost 30% of Greenhouse gas emissions[1]. We all love burritos and we wanted to see how our food preferences impacts the environment.")), 
      ),
      column(1)
    ),
@@ -242,7 +242,7 @@ ui <- navbarPage(
             div(class="panel panel-success",
                 div(class="panel-body",  
                     tags$img(src = "dashboard.png", 
-                             width = "100px", height = "100px"), align = "center",
+                             width = "90px", height = "90px"), align = "center",
                     tags$div( 
                      div( align = "center", 
                                    h2("Where does the data come from?")
@@ -250,14 +250,14 @@ ui <- navbarPage(
                     ),
                     #tags$p(h4("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
                     tags$ul(align = "left",
-                      tags$li(h4("The greenhouse gas emission dataset for the ingredients is normalized from two sources. The chicken, beef, pork data comes from the Food and Agriculture Organization of the United Nations [1], and the rest comes from a study published in Science in 2018 [2].")),
-                      tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [3, 4, 5, 6, 7].")),
-                      tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [8]"))
+                      tags$li(h4("The greenhouse gas emission dataset for the ingredients is normalized from two sources. The chicken, beef, pork data comes from the Food and Agriculture Organization of the United Nations [2], and the rest comes from a study published in Science in 2018 [3].")),
+                      tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [4, 5, 6, 7, 8].")),
+                      tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [9]"))
                     )
                 )
             ) # Closes div panel
-     ), # Closes column
-     column(1)
+     ) # Closes column
+   
    ),
    # TEAM BIO
    fluidRow(
@@ -281,11 +281,11 @@ ui <- navbarPage(
                                width = "120px", height = "120px",class="img-circle")
                     ),
                     div(
-                      tags$h5("Maddie"),
-                      tags$h6( tags$i("'Veggie Burrito'"))
+                      tags$h4("Maddie"),
+                      tags$h5( tags$i("'Veggie Burrito'"))
                     ),
                     div(
-                      tags$h5("Berger")
+                      tags$h4("Berger")
                      
                     )
                    
@@ -303,11 +303,11 @@ ui <- navbarPage(
                                width = "120px", height = "120px",class="img-circle")
                     ),
                     div(
-                      tags$h5("Ilayda"),
-                      tags$h6( tags$i("'Queen Burrito'"))
+                      tags$h4("Ilayda"),
+                      tags$h5( tags$i("'Queen Burrito'"))
                     ),
                     div(
-                      tags$h5("Dinc")
+                      tags$h4("Dinc")
                     )
                # )
             #)
@@ -321,11 +321,11 @@ ui <- navbarPage(
                       tags$img(src = "ted.jpg", 
                                width = "120px", height = "120px",class="img-circle")),
                     div(
-                      tags$h5("Ted"),
-                      tags$h6( tags$i("'Breakfast Burrito'"))
+                      tags$h4("Ted"),
+                      tags$h5( tags$i("'Breakfast Burrito'"))
                     ),
                     div(
-                      tags$h5("Jiang")
+                      tags$h4("Jiang")
                     )
                 )
           #  ) )
@@ -333,32 +333,36 @@ ui <- navbarPage(
    fluidRow(style = "height:200px;")
  ),  # Closes About tab
                  tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
-                            shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home<br>
+                            shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>
+                            [1] Smith, P., & Gregory, P. J. (2013). Climate change and sustainable food production. Proceedings of the Nutrition Society, 72(1), 21-28.
+                            <br>
 <br>
-[2]Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216 
+                            [2] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home<br>
+<br>
+[3]Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216 
 
 <br>
 <br>
-[3]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
+[4]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
 https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference
  <br>
  <br>
-[4] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.
+[5] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.
 
 <br>
 <br>
-[5] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)
+[6] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)
 
 <br>
 <br>
-[6] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)
+[7] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)
 
 <br>
 <br>
-[7] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)
+[8] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)
 <br>
 <br> 
-[8]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos
+[9]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos
 </h4>                              "))
                           
                  
