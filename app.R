@@ -204,23 +204,27 @@ ui <- navbarPage(
   tabPanel("About", icon = icon("users"), 
            img(src="image3.jpg", height="140%",width="100%",style = 'position: absolute; opacity: 0.2;'),
   
-  fluidRow(
-    shiny::HTML("<br><br><center> 
-                                            <h1>About Guilt-free Burritos</h1> 
+  #fluidRow(
+   # shiny::HTML("<br><br><center> 
+                                          #  <h1>About Guilt-free Burritos</h1> 
                             
-                                            </center>
+                                          #  </center>
                                       
-                                            ")),
+                                          #  ")),
   fluidRow(
-    div(align = "center",
-        tags$span(h4("How did we come up with this idea?"), 
+    div( div(
+      tags$img(src = "environment.png", 
+               width = "100px", height = "100px")
+    ),
+      align = "center",
+        tags$span(h3("How did we come up with this idea?"), 
                   style = "font-weight:bold"
         ))
   ),
   fluidRow(
     column(1),
     column(10,
-           tags$p(h6("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
+           tags$p(h5("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
     ),
     column(4)
   ),
@@ -230,13 +234,14 @@ ui <- navbarPage(
            # Panel for Background on Data
            div(class="panel panel-default",
                div(class="panel-body",  
-                   tags$div( align = "center",
-                             icon("table", class = "fa-4x"),
-                             div( align = "center", 
-                                  h4("Where does the data come from?")
+                   tags$img(src = "dashboard.png", 
+                            width = "100px", height = "100px"), align = "center",
+                   tags$div( 
+                    div( align = "center", 
+                                  h3("Where does the data come from?")
                              )
                    ),
-                   tags$p(h6("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
+                   tags$p(h5("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
                    tags$ul(
                      tags$li(h6("Any career movement within 30 days of a previous career movement was ignored. Although this represents a small percent of movement, these job transitions may have reflected data entry errors and may have skewed probabilities in jobs with a small number of incumbents.")),
                      tags$li(h6("Minor demotions were retained in the data to reflect deliberate career choices; however, demotions of a significant percent were excluded."))
@@ -248,9 +253,9 @@ ui <- navbarPage(
   ),
   # TEAM BIO
   fluidRow(
-    column(2),
+    column(1),
     column(10,
-           shiny::HTML("<br><br><center> <h2>ABOUT THE TEAM</h2> </center><br>")
+           shiny::HTML("<br><center> <h2>ABOUT THE TEAM</h2> </center><br>")
     ),
     column(2)
   ),
@@ -264,7 +269,7 @@ ui <- navbarPage(
                div(class="panel-body",  width = "1000px",
                    align = "center",
                    div(
-                     tags$img(src = "man_beard_1.svg", 
+                     tags$img(src = "avatar.jpeg", 
                               width = "100px", height = "100px",class="img-circle")
                    ),
                    div(
