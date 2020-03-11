@@ -201,8 +201,124 @@ ui <- navbarPage(
                                          )),
                             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
                           )),
-  tabPanel("Team", icon = icon("users")
-           ),
+  tabPanel("About", icon = icon("users"), 
+           img(src="image3.jpg", height="120%",width="100%",style = 'position: absolute; opacity: 0.2;'),
+  
+  fluidRow(
+    shiny::HTML("<br><br><center> 
+                                            <h1>About Guilt-free Burritos</h1> 
+                            
+                                            </center>
+                                      
+                                            ")),
+  fluidRow(
+    div(align = "center",
+        tags$span(h4("How did we come up with this idea?"), 
+                  style = "font-weight:bold"
+        ))
+  ),
+  fluidRow(
+    column(1),
+    column(10,
+           tags$p(h6("The need for the Career PathFinder grew out of the fact that it is simply difficult to navigate the classification structure if you do not already know it or know someone who has gone through it.")), 
+    ),
+    column(4)
+  ),
+  fluidRow(
+    column(1),
+    column(10,
+           # Panel for Background on Data
+           div(class="panel panel-default",
+               div(class="panel-body",  
+                   tags$div( align = "center",
+                             icon("table", class = "fa-4x"),
+                             div( align = "center", 
+                                  h4("Where does the data come from?")
+                             )
+                   ),
+                   tags$p(h6("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
+                   tags$ul(
+                     tags$li(h6("Any career movement within 30 days of a previous career movement was ignored. Although this represents a small percent of movement, these job transitions may have reflected data entry errors and may have skewed probabilities in jobs with a small number of incumbents.")),
+                     tags$li(h6("Minor demotions were retained in the data to reflect deliberate career choices; however, demotions of a significant percent were excluded."))
+                   )
+               )
+           ) # Closes div panel
+    ), # Closes column
+    column(2)
+  ),
+  # TEAM BIO
+  fluidRow(
+    column(2),
+    column(10,
+           shiny::HTML("<br><br><center> <h2>ABOUT THE TEAM</h2> </center><br>")
+    ),
+    column(2)
+  ),
+  
+  fluidRow(
+    column(2),
+    
+    # Marc
+    column(2,
+           div(class="panel panel-default", 
+               div(class="panel-body",  width = "1000px",
+                   align = "center",
+                   div(
+                     tags$img(src = "man_beard_1.svg", 
+                              width = "100px", height = "100px",class="img-circle")
+                   ),
+                   div(
+                     tags$h5("Maddie Berger"),
+                     tags$h6( tags$i("Visionary & Project Lead"))
+                   ),
+                   div(
+                     "My County career path started as a Human Resources Analyst."
+                   )
+               )
+           )
+    ),
+    # George
+    column(2,
+           div(class="panel panel-default",
+               div(class="panel-body",  width = "1000px", 
+                   align = "center",
+                   div(
+                     tags$img(src = "ilayda.jpg", 
+                              width = "100px", height = "100px",class="img-circle")
+                   ),
+                   div(
+                     tags$h5("Ilayda Dinc"),
+                     tags$h6( tags$i("Data Scientist & Programmer"))
+                   ),
+                   div(
+                     "My County career path started as an Intermediate Typist Clerk."
+                   )
+               )
+           )
+    ),
+    # Angela
+    column(2,
+           div(class="panel panel-default",
+               div(class="panel-body",  width = "1000px", 
+                   align = "center",
+                   div(
+                     tags$img(src = "woman.svg", 
+                              width = "100px", height = "100px")),
+                   div(
+                     tags$h5("Ted Jiang"),
+                     tags$h6( tags$i("Writer"))
+                   ),
+                   div(
+                     "My County career path started as an Administrative Assistant."
+                   )
+               )
+           )
+    ),
+    column(2)
+    
+  ),
+  fluidRow(style = "height:200px;")
+),  # Closes About tab
                  tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
                             shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
 <br>
