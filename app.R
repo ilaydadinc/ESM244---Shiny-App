@@ -261,12 +261,12 @@ ui <- navbarPage(
   ),
   
   fluidRow(
-    column(2),
+    column(1),
     
     # Marc
-    column(2,
+    column(3,
            div(class="panel panel-default", 
-               div(class="panel-body",  width = "1000px",
+               div(class="panel-body",  width = "400px",
                    align = "center",
                    div(
                      tags$img(src = "avatar.jpeg", 
@@ -277,15 +277,17 @@ ui <- navbarPage(
                      tags$h6( tags$i("Visionary & Project Lead"))
                    ),
                    div(
-                     "My County career path started as a Human Resources Analyst."
+                     tags$h5("Maddie Berger")
+                    
                    )
+                  
                )
            )
     ),
     # George
-    column(2,
+    column(3,
            div(class="panel panel-default",
-               div(class="panel-body",  width = "1000px", 
+               div(class="panel-body",  width = "600px", 
                    align = "center",
                    div(
                      tags$img(src = "ilayda.jpg", 
@@ -296,15 +298,15 @@ ui <- navbarPage(
                      tags$h6( tags$i("Data Scientist & Programmer"))
                    ),
                    div(
-                     "My County career path started as an Intermediate Typist Clerk."
+                     tags$h5("Maddie Berger")
                    )
                )
            )
-    ),
+          ),
     # Angela
-    column(2,
+    column(3,
            div(class="panel panel-default",
-               div(class="panel-body",  width = "1000px", 
+               div(class="panel-body",  width = "600px", 
                    align = "center",
                    div(
                      tags$img(src = "woman.svg", 
@@ -314,14 +316,13 @@ ui <- navbarPage(
                      tags$h6( tags$i("Writer"))
                    ),
                    div(
-                     "My County career path started as an Administrative Assistant."
+                     tags$h5("Maddie Berger")
                    )
                )
-           )
-    ),
-    column(2)
-    
-  ),
+           ) ),
+    column(1)
+
+     ),
   fluidRow(style = "height:200px;")
 ),  # Closes About tab
                  tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
