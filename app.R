@@ -636,5 +636,6 @@ server <- function(input, output){
   
 }
 
+
 # Let R know that you want to combine the ui & server into an app: 
 shinyApp(ui = ui, server = server)
