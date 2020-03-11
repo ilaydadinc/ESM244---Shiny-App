@@ -356,7 +356,12 @@ https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculation
 <br>
 <br>
 [7] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)
-          </h4>                              "))
+<br>
+<br> 
+[8] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home
+<br>
+<br> 
+[9]Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216                                     </h4>                              "))
                           
                  
                  
