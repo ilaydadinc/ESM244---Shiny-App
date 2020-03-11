@@ -248,10 +248,11 @@ ui <- navbarPage(
                                    h2("Where does the data come from?")
                               )
                     ),
-                    tags$p(h4("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
-                    tags$ul(
-                      tags$li(h5("Any career movement within 30 days of a previous career movement was ignored. Although this represents a small percent of movement, these job transitions may have reflected data entry errors and may have skewed probabilities in jobs with a small number of incumbents.")),
-                      tags$li(h5("Minor demotions were retained in the data to reflect deliberate career choices; however, demotions of a significant percent were excluded."))
+                    #tags$p(h4("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
+                    tags$ul(align = "left",
+                      tags$li(h4("The greenhouse gas emission dataset for the ingredients is normalized from two sources. The chicken, beef, pork data comes from the Food and Agriculture Organization of the United Nations [1], and the rest comes from a study published in Science in 2018 [2].")),
+                      tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [3, 4, 5, 6, 7].")),
+                      tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [8]"))
                     )
                 )
             ) # Closes div panel
@@ -332,15 +333,14 @@ ui <- navbarPage(
    fluidRow(style = "height:200px;")
  ),  # Closes About tab
                  tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
-                            shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] Wernet, G., Bauer, C., Steubing, B., Reinhard, J., Moreno-Ruiz, E., and Weidema, B., 2016. The ecoinvent database version 3 (part I): overview and methodology. The International Journal of Life Cycle Assessment, [online] 21(9), pp.1218–1230. Available at: <http://link.springer.com/10.1007/s11367-016-1087-8> [Accessed February 5, 2020]. <br>
+                            shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home<br>
 <br>
-[2]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
+[2]Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216 
+
+<br>
+<br>
+[3]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
 https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference
-
-<br>
-<br>
-[3]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos 
-
  <br>
  <br>
 [4] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.
@@ -358,10 +358,8 @@ https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculation
 [7] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)
 <br>
 <br> 
-[8] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home
-<br>
-<br> 
-[9]Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216                                     </h4>                              "))
+[8]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos
+</h4>                              "))
                           
                  
                  
