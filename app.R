@@ -154,7 +154,6 @@ ui <- navbarPage(
                        plotOutput(outputId = "emission_contri"),
                        HTML("<br><br><br>"),
                        htmlOutput("emission_table"),
-                       HTML("<br>"),
                        HTML("<h4><b>What does this mean?</b></h4>"),
                        HTML("<h5>Greenhouse gases trap heat in the atmosphere and cause climate change. It is usually expressed in kg carbon dioxide equivalent. Electricity and heat production, industrial production, and agriculture and forestry are the top three contributors to greenhouse gas emissions [1].
 The bar graph shows the breakdown of greenhouse gas emissions by ingredients for your customized burrito. As an example, the result for beef accounts for all the greenhouse gas emissions in its production lifetime, which potentially includes cattle grazing and slaughtering, animal feed growth, storage & transportation, etc.
