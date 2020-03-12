@@ -566,7 +566,7 @@ server <- function(input, output){
     
     kable_data <- data.frame(c(as.character(round(total_emission,digits = 1))))
       
-    kable(kable_data, col.names = c("Total Greenhouse Gas Emissions (g CO2 eq)")) %>%
+    kable(kable_data, col.names = c("Total Greenhouse Gas Emissions (g CO2 eq)"), align = "c") %>%
       kable_styling(
         font_size = 20,
         full_width = F,
