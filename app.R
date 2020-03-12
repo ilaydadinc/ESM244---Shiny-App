@@ -237,13 +237,17 @@ The total greenhouse gas emission is also shown under the graph."))
   tabPanel("Get Your Burrito", icon = icon("map-marked-alt"),
            sidebarLayout(
              sidebarPanel(h1("Find a burrito"),
-                          "Enter the first three digits of your zipcode to find a burrito establishment close to you",
+                          h3("Enter the first three digits of your zipcode to find a burrito establishment close to you, then pick a restaurant"),
                           textInput("postalcode",
-                                    label = "",
+                                    label = "Enter the first three digits of the zip code",
                                     value = "e.g. 931"
-                                    )
+                                    ),
+                          selectInput("restaurant",
+                                      label = "Select a restaurant",
+                                      choices = NULL)
                           ),
-             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
+             mainPanel(leafletOutput("burr_map", width = 700, height = 500),
+                       htmlOutput("burrito_table"))
                        #tableOutput("burrito_table")) 
              )
            ),
@@ -519,7 +523,7 @@ burr_icon <- makeIcon("burr_icon.svg", iconWidth = 15, iconHeight = 15)
 
 #Create a 'server'
 
-server <- function(input, output){
+server <- function(session, input, output){
   ### TAB 2 ###
   #output for burrito builder
   output$emission_contri <- renderPlot({
@@ -663,6 +667,18 @@ server <- function(input, output){
    filter(zip == input$postalcode)
  })
     
+  #Filter the options for the second tab
+  observe({
+    x <- burritos_clean %>%
+      filter(zip == input$postalcode) %>% 
+      select(name)
+    
+    updateSelectInput(session, 
+                      "restaurant",
+                      "Select a restaurant",
+                      choices = unique(x))
+  })
+    
 
   
   #output for burrito map
@@ -689,18 +705,25 @@ server <- function(input, output){
 
 #table with information
 
-kable_data_map <- reactive({
-    burritos_clean %>% 
-      filter(zip == input$postalcode) %>% 
-      select(name, menus_name, menus_description)
-  }) 
+#kable_data_map <- reactive({
+#    burritos_clean %>% 
+#      filter(zip == input$postalcode) %>% 
+#      select(name, menus_name, menus_description)
+#  }) 
 
-output$burrito_table <- renderTable({
+output$burrito_table <- renderText({
   
-  kable(kable_data_map(), col.names = c("Burrito Details")) %>%
+  burrito_table_data <- burritos_clean %>%
+    filter(zip == input$postalcode) %>%
+    filter(name == input$restaurant) %>% 
+    select(menus_name)
+  
+  kable(burrito_table_data, col.names = c("Burrito Menu")) %>%
     kable_styling(
       font_size = 20,
-      bootstrap_options = c("striped", "condensed")
+      full_width = F,
+      position = "left",
+      bootstrap_options = c("striped", "condensed","hover")
     ) 
 })
 
