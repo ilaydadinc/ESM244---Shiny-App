@@ -195,12 +195,14 @@ The total greenhouse gas emission is also shown under the graph.</h5>"))
              mainPanel(uiOutput("offset_table_1"),
                        uiOutput("offset_table_2"),
                        uiOutput("offset_table_3"),
-                       HTML(" Explanation here"))
+                       HTML("<h4><b>Why make these changes?</b></h4>"),
+                       HTML("<h5> Even if you can't go without that beef burrito, there are many ways to reduce your carbon footprint. Trees abosorb carbon dioxide - here you can see how many burritos you can offset by planting just one seedling. Biking, walking or skating helps avoid emissions from gas-powered vehicles, while recycling helps avoid emissions
+                            that result from material decomposing at the landfill. Lasly, switching out incandescent lightbulbs for LEED bulbs makes lighting more energy efficient, reducing demand on power plants, which produce high amounts of GHG emissions.</h5>"))
              )
            ),
   tabPanel("Get your burrito", icon = icon("map-marked-alt"),
            sidebarLayout(
-             sidebarPanel(h1("Nearby burritos"),
+             sidebarPanel(h1("Find a burrito"),
                           "Enter the first three digits of your zipcode to find a burrito establishment close to you",
                           textInput("postalcode",
                                     label = "",

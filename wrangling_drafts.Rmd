@@ -42,5 +42,21 @@ burritos_clean <- burritos %>%
   )
 
 
+burritos_table <- burritos_clean %>% 
+  filter(zip == "931") %>% 
+  select(name, menus_name, menus_description) %>% 
+  group_by(name) 
+  
+
+
+output$burrito_table <- renderTable({
+  
+  kable(kable_data_map(), col.names = c("Burrito Details")) %>%
+    kable_styling(
+      font_size = 20,
+      bootstrap_options = c("striped", "condensed")
+    ) 
+})
+
 
 ```
