@@ -264,7 +264,7 @@ The total greenhouse gas emission is also shown under the graph."))
      ),
        align = "center",
          tags$span(h2("How did we come up with this idea?"), 
-                   style = "font-weight:bold",
+                   style = "font-weight:bold"
          ))
    ),
    fluidRow(
