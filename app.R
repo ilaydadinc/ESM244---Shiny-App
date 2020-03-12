@@ -235,7 +235,7 @@ The total greenhouse gas emission is also shown under the graph.</h5>"))
    fluidRow(
      column(1),
      column(10, align = "left",
-            tags$p(h4("We are students at UCSB Bren School. We took Life Cycle Assessment(LCA) class together and we wanted to use it as a tool in our daily lives. Globally, agriculture accounts for almost 30% of Greenhouse gas emissions[2]. We all love burritos and we wanted to see how our food preferences impacts the environment.")), 
+            tags$p(h4("We are students at UCSB Bren School. We took Life Cycle Assessment(LCA) class together and we wanted to use it as a tool in our daily lives. Globally, agriculture accounts for almost 30% of Greenhouse gas emissions[2]. We all love burritos and we wanted to see how our food preferences impacts the environment."))
      ),
      column(1)
    ),
