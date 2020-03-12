@@ -67,7 +67,7 @@ ui <- navbarPage(
                           fluidRow(
                             column(2),
                             column(12,
-                                   shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? <br> Don’t worry we got you!</h1><br><h4>Use our map to find a burrito close by</h4>
+                                   shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? <br> Don’t worry we got you!</h1><br><h4>Make sure to check out 'Get Your Burrito'tab!</h4>
 </center><br>")
                                    ),
                             column(2)
@@ -154,10 +154,29 @@ ui <- navbarPage(
                        plotOutput(outputId = "emission_contri"),
                        HTML("<br><br><br>"),
                        htmlOutput("emission_table"),
-                       HTML("<h4><b>What does this mean?</b></h4>"),
-                       HTML("<h5>Greenhouse gases trap heat in the atmosphere and cause climate change. It is usually expressed in kg carbon dioxide equivalent. Electricity and heat production, industrial production, and agriculture and forestry are the top three contributors to greenhouse gas emissions [1].
+                       HTML("<br>"),
+                       fluidRow(
+                         column(1),
+                     
+                         column(10,
+                                #             Panel for Background on Data
+                                div(class="panel panel-success",
+                                    div(class="panel-body",  
+                                        tags$div( 
+                                          div( align = "center", style="color:darkslateblue",
+                                               h4("What does this mean?")
+                                          )
+                                        ),
+                                        tags$p(h5("Greenhouse gases trap heat in the atmosphere and cause climate change. It is usually expressed in kg carbon dioxide equivalent. Electricity and heat production, industrial production, and agriculture and forestry are the top three contributors to greenhouse gas emissions [1].
 The bar graph shows the breakdown of greenhouse gas emissions by ingredients for your customized burrito. As an example, the result for beef accounts for all the greenhouse gas emissions in its production lifetime, which potentially includes cattle grazing and slaughtering, animal feed growth, storage & transportation, etc.
-The total greenhouse gas emission is also shown under the graph.</h5>"))
+The total greenhouse gas emission is also shown under the graph.")),
+                                
+                                    )
+                                ) # Closes div panel
+                         ), # Closes column
+                         
+                       column(1))
+                      )
              )
            ),
   tabPanel("Offset Calculator",icon = icon("calculator"),
@@ -194,12 +213,28 @@ The total greenhouse gas emission is also shown under the graph.</h5>"))
              mainPanel(uiOutput("offset_table_1"),
                        uiOutput("offset_table_2"),
                        uiOutput("offset_table_3"),
-                       HTML("<h4><b>Why make these changes?</b></h4>"),
-                       HTML("<h5> Even if you can't go without that beef burrito, there are many ways to reduce your carbon footprint. Trees abosorb carbon dioxide - here you can see how many burritos you can offset by planting just one seedling. Biking, walking or skating helps avoid emissions from gas-powered vehicles, while recycling helps avoid emissions
-                            that result from material decomposing at the landfill. Lasly, switching out incandescent lightbulbs for LEED bulbs makes lighting more energy efficient, reducing demand on power plants, which produce high amounts of GHG emissions.</h5>"))
+                       fluidRow(
+                         column(1),
+                         column(10,
+                                #             Panel for Background on Data
+                                div(class="panel panel-success",
+                                    div(class="panel-body",  
+                                        tags$div( 
+                                          div( align = "center", style="color:darkslateblue",
+                                               h4("Why make these changes?")
+                                          )
+                                        ),
+                                        tags$p(h5("Even if you can't go without that beef burrito, there are many ways to reduce your carbon footprint. Trees absorb carbon dioxide - here you can see how many burritos you can offset by planting just one seedling. Biking, walking or skating help avoid emissions from gas-powered vehicles, while recycling helps avoid emissions
+                            that result from material decomposing at the landfill. Lastly, switching out incandescent lightbulbs for LEED bulbs makes lighting more energy efficient, reducing demand on power plants, which produce high amounts of GHG emissions.")),
+                                        
+                                    )
+                                ) # Closes div panel
+                         ), # Closes column
+                        column(1) 
+                       ))
              )
            ),
-  tabPanel("Get your burrito", icon = icon("map-marked-alt"),
+  tabPanel("Get Your Burrito", icon = icon("map-marked-alt"),
            sidebarLayout(
              sidebarPanel(h1("Find a burrito"),
                           "Enter the first three digits of your zipcode to find a burrito establishment close to you",
@@ -229,7 +264,7 @@ The total greenhouse gas emission is also shown under the graph.</h5>"))
      ),
        align = "center",
          tags$span(h2("How did we come up with this idea?"), 
-                   style = "font-weight:bold"
+                   style = "font-weight:bold",
          ))
    ),
    fluidRow(
@@ -248,7 +283,7 @@ The total greenhouse gas emission is also shown under the graph.</h5>"))
                     tags$img(src = "dashboard.png", 
                              width = "90px", height = "90px"), align = "center",
                     tags$div( 
-                     div( align = "center", 
+                     div( align = "center",
                                    h2("Where does the data come from?")
                               )
                     ),
@@ -267,7 +302,7 @@ The total greenhouse gas emission is also shown under the graph.</h5>"))
    fluidRow(
      column(1),
      column(10,
-            shiny::HTML("<center> <h1>ABOUT THE TEAM</h1> </center><br>")
+            shiny::HTML("<font color='darkslateblue'><center> <h1>ABOUT THE TEAM</h1> </center></font><br>")
      ),
      column(1)
    ),
@@ -534,7 +569,9 @@ server <- function(input, output){
     kable(kable_data, col.names = c("Total Greenhouse Gas Emissions (g CO2 eq)")) %>%
       kable_styling(
         font_size = 20,
-        bootstrap_options = c("striped", "condensed")
+        full_width = F,
+        position = "center",
+        bootstrap_options = c("striped", "condensed","hover")
       ) 
   })
   ### TAB 3 ###
