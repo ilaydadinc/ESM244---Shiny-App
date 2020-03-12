@@ -169,12 +169,12 @@ ui <- navbarPage(
                                         ),
                                         tags$p(h5("Greenhouse gases trap heat in the atmosphere and cause climate change. It is usually expressed in kg carbon dioxide equivalent. Electricity and heat production, industrial production, and agriculture and forestry are the top three contributors to greenhouse gas emissions [1].
 The bar graph shows the breakdown of greenhouse gas emissions by ingredients for your customized burrito. As an example, the result for beef accounts for all the greenhouse gas emissions in its production lifetime, which potentially includes cattle grazing and slaughtering, animal feed growth, storage & transportation, etc.
-The total greenhouse gas emission is also shown under the graph.")),
+The total greenhouse gas emission is also shown under the graph."))
                                 
                                     )
                                 ) # Closes div panel
                          ), # Closes column
-                         
+           
                        column(1))
                       )
              )
@@ -225,7 +225,7 @@ The total greenhouse gas emission is also shown under the graph.")),
                                           )
                                         ),
                                         tags$p(h5("Even if you can't go without that beef burrito, there are many ways to reduce your carbon footprint. Trees absorb carbon dioxide - here you can see how many burritos you can offset by planting just one seedling. Biking, walking or skating help avoid emissions from gas-powered vehicles, while recycling helps avoid emissions
-                            that result from material decomposing at the landfill. Lastly, switching out incandescent lightbulbs for LEED bulbs makes lighting more energy efficient, reducing demand on power plants, which produce high amounts of GHG emissions.")),
+                            that result from material decomposing at the landfill. Lastly, switching out incandescent lightbulbs for LEED bulbs makes lighting more energy efficient, reducing demand on power plants, which produce high amounts of GHG emissions."))
                                         
                                     )
                                 ) # Closes div panel
