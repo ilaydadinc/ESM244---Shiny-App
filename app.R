@@ -243,8 +243,8 @@ The total greenhouse gas emission is also shown under the graph."))
                                     value = "e.g. 931"
                                     )
                           ),
-             mainPanel(leafletOutput("burr_map", width = 700, height = 500),
-                       tableOutput("burrito_table")) 
+             mainPanel(leafletOutput("burr_map", width = 700, height = 500))
+                       #tableOutput("burrito_table")) 
              )
            ),
    tabPanel("About", icon = icon("users"), 
