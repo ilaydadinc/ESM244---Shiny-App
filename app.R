@@ -42,7 +42,7 @@ ui <- navbarPage(
                ),
            tags$hr(),
            # WHAT
-           fluidRow(column(12,shiny::HTML("<center><h4>It is true. Burritos carry a lot. Have you ever thought about how it matters what it contains? <br><br>This app is here to help you to build your burrito and see your environmental impact<br> in the form of greenhouse gas emissions.</h4></center>")
+           fluidRow(column(12,shiny::HTML("<center><h4>It's true - burritos carry a lot. Have you ever thought about the environmental impact of what it contains? <br><br>This app is here to help you to assess the greenhouse gass emissions of different ingredients<br> while designing your dream burrito.</h4></center>")
                             ),
                     column(4
                            )
@@ -55,7 +55,7 @@ ui <- navbarPage(
            fluidRow(column(2),
                     column(12,
                            shiny::HTML("<br><br><center> <h1>How does it work?</h1> </center><br>"),
-                           shiny::HTML("<center><h4> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions<br>according to the your choices.<br><br> Then, if you keep exploring our app and you will see how you can offset these emissions<br>by making small changes to your life choices in the 'Offset Calculator'tab.</h4></center>")
+                           shiny::HTML("<center><h4> In the 'Burrito Builder!' tab, you will be able to calculate your greenhouse gas emissions<br>according to the your choices.<br><br> Then, if you keep exploring our app and you can see how to offset these emissions<br>by making small changes to your life choices in the 'Offset Calculator'tab.</h4></center>")
                            ),
                     column(2)
                     ),
@@ -67,9 +67,8 @@ ui <- navbarPage(
                           fluidRow(
                             column(2),
                             column(12,
-                                   shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? <br> Don’t worry we got you!
-
-</h1> </center><br>")
+                                   shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? <br> Don’t worry we got you!</h1><br><h4>Use our map to find a burrito close by</h4>
+</center><br>")
                                    ),
                             column(2)
                             ),
