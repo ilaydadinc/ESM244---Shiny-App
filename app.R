@@ -720,7 +720,7 @@ output$burrito_table <- renderText({
   
   kable(burrito_table_data, col.names = c("Burrito Menu")) %>%
     kable_styling(
-      font_size = 20,
+      font_size = 15,
       full_width = F,
       position = "left",
       bootstrap_options = c("striped", "condensed","hover")
