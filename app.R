@@ -67,7 +67,7 @@ ui <- navbarPage(
                           fluidRow(
                             column(2),
                             column(12,
-                                   shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? <br> Don’t worry we got you!</h1><br><h4>Make sure to check out 'Get Your Burrito'tab!</h4>
+                                   shiny::HTML("<br><br><center> <h1>All you can think of is having a burrito now, right? <br> Don’t worry we got you!</h1><br><h4>Make sure to check out the 'Get Your Burrito' tab! </h4>
 </center><br>")
                                    ),
                             column(2)
