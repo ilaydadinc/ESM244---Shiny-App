@@ -234,7 +234,76 @@ The total greenhouse gas emission is also shown under the graph."))
                         column(1)
                         )
                        ),
-                       tabPanel("Assumptions"))
+                       tabPanel("Methods and Assumptions",
+                                fluidRow(
+                           
+                                  column(12,
+                                         #Panel for Background on Data
+                                         div(class="panel panel-success",
+                                             div(class="panel-body",  
+                                                 tags$div( 
+                                                   div(align = "left",
+                                                       h5("The calculations were made based on EPA's methodology and the detailed information can be found in the link below.")
+                                                   )
+                                                 ),
+                                                 tags$a(h6("EPA GHG Equivalency Calculator"),href="https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references"),
+                                                 tags$div( 
+                                                   div(align = "left",
+                                                       h5("Here is a summary of the methodology:")
+                                                   )
+                                                 ),
+                                                 tags$div( 
+                                                   div(align = "left",
+                                                       h6("Avoided miles by a passenger vehicle")
+                                                   )
+                                                 ),
+                                                 tags$ul(align = "left",
+                                                         tags$li(h6("Carbon dioxide emissions per gallon of gasoline was calculated by assuming that all the carbon in the gasoline is converted to CO2 (IPCC 2006).")),
+                                                         tags$li(h6("Then, it was divided by the average fuel economy (mpg) of vehicles to determine carbon dioxide emitted per mile traveled by a typical passenger vehicle. 
+")),
+                                                         tags$li(h6("Then, it was divided by the ratio of carbon dioxide emissions to total vehicle greenhouse gas emissions to account for other greenhouse gases, methane and nitrous oxide."))
+                                                 ),
+                                                 tags$div( 
+                                                   div(align = "left",
+                                                       h6("Minutes of walking, biking and skating")
+                                                   )
+                                                 ),
+                                                 tags$ul(align = "left",
+                                                         tags$li(h6("Average walking speed was taken as 3.1 mph")),
+                                                         tags$li(h6("Average biking speed is taken as 12 mph ")),
+                                                         tags$li(h6("Average skating speed is taken as 9 mph"))
+                                                 ),
+                                                 tags$div( 
+                                                   div(align = "left",
+                                                       h6("Switching from Incandescent Lamps to LED
+")
+                                                   )
+                                                 ),
+                                                 tags$ul(align = "left",
+                                                         tags$li(h6("Annual energy savings was multiplied by the national weighted average carbon dioxide marginal emission rate for delivered electricity. 
+")),
+                                                         tags$li(h6("The national weighted average carbon dioxide marginal emission rate accounts for losses during transmission and distribution (EPA 2019)."))
+                                                         
+                                                 ),
+                                                 tags$div( 
+                                                   div(align = "left",
+                                                       h6("Planting trees")
+                                                   )
+                                                 ),
+                                                 tags$ul(align = "left",
+                                                        
+                                         
+                                                         tags$li(h6("The main assumption is that the trees will be grown for 10 years.
+ "))
+                                                        
+                                                 )
+                                                 
+                                             )
+                                         ) # Closes div panel
+                                  ) # Closes column
+                                ) #closes fluid row
+                                )# closes tab panel
+                       )
              )
            )),
   tabPanel("Get Your Burrito", icon = icon("map-marked-alt"),
