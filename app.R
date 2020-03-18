@@ -216,22 +216,22 @@ The total greenhouse gas emission is also shown under the graph."))
                        fluidRow(
                          column(1),
                          column(10,
-                                #             Panel for Background on Data
+                                # Panel for Background on Data
                                 div(class="panel panel-success",
                                     div(class="panel-body",  
                                         tags$div( 
-                                          div( align = "center", style="color:darkslateblue",
-                                               h4("Why make these changes?")
-                                          )
+                                          div(align = "center", style="color:darkslateblue",
+                                              h4("Why make these changes?")
+                                              )
                                         ),
                                         tags$p(h5("Even if you can't go without that beef burrito, there are many ways to reduce your carbon footprint. Trees absorb carbon dioxide - here you can see how many burritos you can offset by planting just one seedling. Biking, walking or skating help avoid emissions from gas-powered vehicles, while recycling helps avoid emissions
                             that result from material decomposing at the landfill. Lastly, switching out incandescent lightbulbs for LEED bulbs makes lighting more energy efficient, reducing demand on power plants, which produce high amounts of GHG emissions."))
-                                        
-                                    )
-                                ) # Closes div panel
-                         ), # Closes column
-                        column(1) 
-                       ))
+                                        )
+                                    ) # Closes div panel
+                                ), # Closes column
+                        column(1)
+                        )
+                       )
              )
            ),
   tabPanel("Get Your Burrito", icon = icon("map-marked-alt"),
@@ -244,176 +244,121 @@ The total greenhouse gas emission is also shown under the graph."))
                                     ),
                           selectInput("restaurant",
                                       label = "Select a restaurant",
-                                      choices = NULL)
+                                      choices = NULL
+                                      )
                           ),
              mainPanel(leafletOutput("burr_map", width = 700, height = 500),
-                       htmlOutput("burrito_table"))
-                       #tableOutput("burrito_table")) 
+                       htmlOutput("burrito_table")
+                       )
              )
            ),
    tabPanel("About", icon = icon("users"), 
             img(src="image3.jpg", height="140%",width="100%",style = 'position: absolute; opacity: 0.2;'),
-   
-   fluidRow(
-     shiny::HTML("<center> 
-                                             <h1>GUILT-FREE BURRITOS</h1> 
-                             
-                                             </center>
-                                       
-                                             ")),
-   fluidRow(
-     div( div(
-       tags$img(src = "environment.png", 
-                width = "100px", height = "100px")
-     ),
-       align = "center",
-         tags$span(h2("How did we come up with this idea?"), 
-                   style = "font-weight:bold"
-         ))
-   ),
-   fluidRow(
-     column(1),
-     column(10, align = "left",
-            tags$p(h4("We are students at UCSB Bren School. We took Life Cycle Assessment(LCA) class together and we wanted to use it as a tool in our daily lives. Globally, agriculture accounts for almost 30% of Greenhouse gas emissions[2]. We all love burritos and we wanted to see how our food preferences impacts the environment."))
-     ),
-     column(1)
-   ),
-   fluidRow(
-     column(1),
-     column(10,
-#             Panel for Background on Data
-            div(class="panel panel-success",
-                div(class="panel-body",  
-                    tags$img(src = "dashboard.png", 
-                             width = "90px", height = "90px"), align = "center",
-                    tags$div( 
-                     div( align = "center",
+            fluidRow(shiny::HTML("<center><h1>GUILT-FREE BURRITOS</h1></center>")),
+            fluidRow(
+              div(
+                div(
+                  tags$img(src = "environment.png", 
+                           width = "100px", height = "100px")
+                  ),
+                align = "center",
+                tags$span(h2("How did we come up with this idea?"), 
+                          style = "font-weight:bold")
+                )
+              ),
+            fluidRow(
+              column(1),
+              column(10, align = "left",
+                     tags$p(h4("We are students at UCSB Bren School. We took Life Cycle Assessment(LCA) class together and we wanted to use it as a tool in our daily lives. Globally, agriculture accounts for almost 30% of Greenhouse gas emissions[2]. We all love burritos and we wanted to see how our food preferences impacts the environment."))
+                     ),
+              column(1)
+              ),
+            fluidRow(
+              column(1),
+              column(10,
+                     #Panel for Background on Data
+                     div(class="panel panel-success",
+                         div(class="panel-body",  
+                             tags$img(src = "dashboard.png", 
+                                      width = "90px", height = "90px"), align = "center",
+                             tags$div( 
+                               div(align = "center",
                                    h2("Where does the data come from?")
-                              )
-                    ),
-                    #tags$p(h4("Over 30 years of data were collected, which resulted in nearly 500,000 records of career movement. Several business rules were developed to ensure the data reflected real opportunities in the current classification system.")),
-                    tags$ul(align = "left",
-                      tags$li(h4("The greenhouse gas emission dataset for the ingredients is normalized from two sources. The chicken, beef, pork data comes from the Food and Agriculture Organization of the United Nations [3], and the rest comes from a study published in Science in 2018 [4].")),
-                      tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [5, 6, 7, 8, 9].")),
-                      tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [10]"))
-                    )
-                )
-            ) # Closes div panel
-     ) # Closes column
-   
-   ),
-   # TEAM BIO
-   fluidRow(
-     column(1),
-     column(10,
-            shiny::HTML("<font color='darkslateblue'><center> <h1>ABOUT THE TEAM</h1> </center></font><br>")
-     ),
-     column(1)
-   ),
-   
-   fluidRow(
-     column(3),
-     
-     # Marc
-     column(2,
-           #div(class="panel panel-success", align="left",
-               # div(class="panel-body",  width = "400px",
+                                   )
+                               ),
+                             tags$ul(align = "left",
+                                     tags$li(h4("The greenhouse gas emission dataset for the ingredients is normalized from two sources. The chicken, beef, pork data comes from the Food and Agriculture Organization of the United Nations [3], and the rest comes from a study published in Science in 2018 [4].")),
+                                     tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [5, 6, 7, 8, 9].")),
+                                     tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [10]"))
+                                     )
+                             )
+                         ) # Closes div panel
+                     ) # Closes column
+              ),
+            #TEAM BIO
+            fluidRow(
+              column(1),
+              column(10,
+                     shiny::HTML("<font color='darkslateblue'><center> <h1>ABOUT THE TEAM</h1> </center></font><br>")
+                     ),
+              column(1)
+              ),
+            fluidRow(
+              column(3),
+              column(2,
                     align = "center",
-                    div(
-                      tags$img(src = "avatar.jpeg", 
+                    div(tags$img(src = "avatar.jpeg", 
                                width = "120px", height = "120px",class="img-circle")
+                        ),
+                    div(tags$h4("Maddie"),
+                        tags$h5( tags$i("'Veggie Burrito'"))
+                        ),
+                    div(tags$h4("Berger")
+                        )
                     ),
-                    div(
-                      tags$h4("Maddie"),
-                      tags$h5( tags$i("'Veggie Burrito'"))
-                    ),
-                    div(
-                      tags$h4("Berger")
-                     
-                    )
-                   
-               # )
-           # )
-     ),
-     
-#     # George
-     column(2, 
-            #div(class="panel panel-success",align="center",
-                #div(class="panel-body",  width = "600px", 
-                    align = "center",
-                    div(
-                      tags$img(src = "ilayda.jpg", 
+              column(2,
+                     align = "center",
+                     div(tags$img(src = "ilayda.jpg", 
                                width = "120px", height = "120px",class="img-circle")
+                         ),
+                    div(tags$h4("Ilayda"),
+                        tags$h5( tags$i("'Queen Burrito'"))
+                        ),
+                    div(tags$h4("Dinc")
+                        )
                     ),
-                    div(
-                      tags$h4("Ilayda"),
-                      tags$h5( tags$i("'Queen Burrito'"))
-                    ),
-                    div(
-                      tags$h4("Dinc")
+              column(2,
+                     align = "center",
+                     div(tags$img(src = "ted.jpg",
+                                  width = "120px", height = "120px",class="img-circle")
+                         ),
+                    div(tags$h4("Ted"),
+                        tags$h5( tags$i("'Breakfast Burrito'"))
+                        ),
+                    div(tags$h4("Jiang")
+                        )
                     )
-               # )
-            #)
-           ),
-     # Angela
-     column(2,
-            #div(class="panel panel-success",align="right",
-               # div(class="panel-body",  width = "600px", 
-                   align = "center",
-                    div(
-                      tags$img(src = "ted.jpg", 
-                               width = "120px", height = "120px",class="img-circle")),
-                    div(
-                      tags$h4("Ted"),
-                      tags$h5( tags$i("'Breakfast Burrito'"))
-                    ),
-                    div(
-                      tags$h4("Jiang")
-                    )
-                )
-          #  ) )
-      ),
-   fluidRow(style = "height:200px;")
- ),  # Closes About tab
-                 tabPanel("References", style = "font-size:25px",align="left", icon = icon("link"),
-                            shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] US EPA. (2020). Global Greenhouse Gas Emissions Data. Retrieved from https://www.epa.gov/ghgemissions/global-greenhouse-gas-emissions-data<br>
-<br>
-[2] Smith, P., & Gregory, P. J. (2013). Climate change and sustainable food production. Proceedings of the Nutrition Society, 72(1), 21-28.
-                            <br>
-<br>
-                            [3] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home<br>
-<br>
-[4]Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216 
+              ),
+            fluidRow(style = "height:200px;")
+            ),  # Closes About tab
+  tabPanel("References", 
+           style = "font-size:25px",
+           align="left", 
+           icon = icon("link"),
+           shiny::HTML("<h1><b> REFERENCES </b></h1>   <h4>[1] US EPA. (2020). Global Greenhouse Gas Emissions Data. Retrieved from https://www.epa.gov/ghgemissions/global-greenhouse-gas-emissions-data<br><br>
+[2] Smith, P., & Gregory, P. J. (2013). Climate change and sustainable food production. Proceedings of the Nutrition Society, 72(1), 21-28.<br><br>
+[3] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home<br><br>
+[4] Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216<br><br>
+[5] Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference<br><br>
+[6] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.<br><br>
+[7] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)<br><br>
+[8] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)<br><br>
+[9] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)<br><br> 
+[10]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos</h4>"
+                       )
+           )
+  )
 
-<br>
-<br>
-[5]  Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from 
-https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference
- <br>
- <br>
-[6] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.
-
-<br>
-<br>
-[7] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)
-
-<br>
-<br>
-[8] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)
-
-<br>
-<br>
-[9] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)
-<br>
-<br> 
-[10]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos
-</h4>                              "))
-                          
-                 
-                 
-                          
-                          
-)
 
 #######################
 
