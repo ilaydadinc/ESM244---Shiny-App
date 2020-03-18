@@ -147,36 +147,67 @@ ui <- navbarPage(
                                       ticks = FALSE
                                       )
                           ),
-             mainPanel(h1("Greenhouse Gas Emissions by Ingredient",
+             mainPanel(
+               tabsetPanel(
+                 type="tabs",
+                 tabPanel("Plot", 
+                          h1("Greenhouse Gas Emissions by Ingredient",
                           style = "font-size:25px",
                           align="center"
                           ),
-                       plotOutput(outputId = "emission_contri"),
-                       HTML("<br><br><br>"),
-                       htmlOutput("emission_table"),
-                       HTML("<br>"),
-                       fluidRow(
-                         column(1),
-                     
-                         column(10,
-                                #             Panel for Background on Data
-                                div(class="panel panel-success",
-                                    div(class="panel-body",  
-                                        tags$div( 
-                                          div( align = "center", style="color:darkslateblue",
-                                               h4("What does this mean?")
-                                          )
-                                        ),
-                                        tags$p(h5("Greenhouse gases trap heat in the atmosphere and cause climate change. It is usually expressed in kg carbon dioxide equivalent. Electricity and heat production, industrial production, and agriculture and forestry are the top three contributors to greenhouse gas emissions [1].
+                          plotOutput(outputId = "emission_contri"),
+                          HTML("<br><br><br>"),
+                          htmlOutput("emission_table"),
+                          HTML("<br>"),
+                          fluidRow(
+                            column(1),
+                            column(10,
+                                   #Panel for Background on Data
+                                   div(class="panel panel-success",
+                                       div(class="panel-body",
+                                           tags$div(
+                                             div(align = "center", style="color:darkslateblue",
+                                                 h4("What does this mean?")
+                                                 )
+                                             ),
+                                             tags$p(h5("Greenhouse gases trap heat in the atmosphere and cause climate change. It is usually expressed in kg carbon dioxide equivalent. Electricity and heat production, industrial production, and agriculture and forestry are the top three contributors to greenhouse gas emissions [1].
 The bar graph shows the breakdown of greenhouse gas emissions by ingredients for your customized burrito. As an example, the result for beef accounts for all the greenhouse gas emissions in its production lifetime, which potentially includes cattle grazing and slaughtering, animal feed growth, storage & transportation, etc.
 The total greenhouse gas emission is also shown under the graph."))
-                                
-                                    )
+                                           )
                                 ) # Closes div panel
                          ), # Closes column
-           
                        column(1))
-                      )
+                      ),
+                 tabPanel("Methods and Assumptions",
+                          fluidRow(
+                            column(12,
+                                   #Panel for Background on Data
+                                   div(class="panel panel-success",
+                                       div(class="panel-body",
+                                           tags$div(
+                                             div(align = "left",
+                                                 h5("The calculations were made based on FAO's food emissions intensities database and a Science research [3][4].")
+                                                 )
+                                             ),
+                                           tags$div(
+                                             div(align = "left",
+                                                 h5("Here are some key assumptions:")
+                                                 )
+                                             ),
+                                           tags$ul(align = "left",
+                                                   tags$li(h5("The emission factors provided by the FAO dataset, which includes chicken, beef, pork, and rice, are estimated based on the production efficiency for different countries. This only captures all the activities happening within the farm gate, excluding all upstream and downstream activities [3].")),
+                                                   tags$li(h5("The emission factors provided by the Science research, which includes all the rest, are life-cycle emissions, thus capturing more emissions than the FAO dataset [4]. Hence, the data-points from the Science research are scaled down to the FAO dataset based on the common category of both datasets--beef.")
+                                                           ),
+                                                   tags$li(h5("Also, for bread, fish, and cheese in the Science dataset, the functional units are 100 g protein instead of 1 kg product. These categories are converted into 1kg based on their average protein contents.")
+                                                           )
+                                                   )
+                                       )
+                                   ) # Closes div panel
+                            ) # Closes column
+                          ) #closes fluid row
+                 )
+               )
+               )
              )
            ),
   tabPanel("Offset Calculator",icon = icon("calculator"),
@@ -212,7 +243,8 @@ The total greenhouse gas emission is also shown under the graph."))
                           ),
              mainPanel(
                tabsetPanel(type="tabs",
-                           tabPanel("Plot", uiOutput("offset_table_1"),
+                           tabPanel("Plot", 
+                                    uiOutput("offset_table_1"),
                        uiOutput("offset_table_2"),
                        uiOutput("offset_table_3"),
                        fluidRow(
