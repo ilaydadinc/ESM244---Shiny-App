@@ -210,7 +210,9 @@ The total greenhouse gas emission is also shown under the graph."))
                                                   "Switching from Incandescent Lamps to LED" = "lightbulb")
                                       )
                           ),
-             mainPanel(uiOutput("offset_table_1"),
+             mainPanel(
+               tabsetPanel(type="tabs",
+                           tabPanel("Plot", uiOutput("offset_table_1"),
                        uiOutput("offset_table_2"),
                        uiOutput("offset_table_3"),
                        fluidRow(
@@ -231,9 +233,10 @@ The total greenhouse gas emission is also shown under the graph."))
                                 ), # Closes column
                         column(1)
                         )
-                       )
+                       ),
+                       tabPanel("Assumptions"))
              )
-           ),
+           )),
   tabPanel("Get Your Burrito", icon = icon("map-marked-alt"),
            sidebarLayout(
              sidebarPanel(h1("Find a burrito"),
