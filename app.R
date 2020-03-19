@@ -32,7 +32,7 @@ ui <- navbarPage(
   theme = shinytheme("flatly"),
   tabPanel("Home",
            icon = icon("home"),
-           h1("BURRITO BUILDER", 
+           h1("GUILT-FREE BURRITOS", 
               style = "font-size:40px",
               align="center"
               ),
@@ -178,7 +178,7 @@ The total greenhouse gas emission is also shown under the graph."))
                          ), # Closes column
                        column(1))
                       ),
-                 tabPanel("Methods and Assumptions",
+                 tabPanel("Assumptions",
                           fluidRow(
                             column(12,
                                    #Panel for Background on Data
@@ -266,7 +266,7 @@ The total greenhouse gas emission is also shown under the graph."))
                         column(1)
                         )
                        ),
-                       tabPanel("Methods and Assumptions",
+                       tabPanel("Assumptions",
                                 fluidRow(
                            
                                   column(12,
@@ -275,57 +275,57 @@ The total greenhouse gas emission is also shown under the graph."))
                                              div(class="panel-body",  
                                                  tags$div( 
                                                    div(align = "left",
-                                                       h6("The calculations were made based on EPA's methodology and the detailed information can be found in the link below.")
+                                                       h5("The calculations were made based on EPA's methodology and the detailed information can be found in the link below.")
                                                    )
                                                  ),
-                                                 tags$a(h6("EPA GHG Equivalency Calculator"),href="https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references"),
+                                                 tags$a(h5("EPA GHG Equivalency Calculator"),href="https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references"),
                                                  tags$div( 
                                                    div(align = "left",
-                                                       h6("Here is a summary of the methodology:")
+                                                       h5("Here is a summary of the methodology and assumptions:")
                                                    )
                                                  ),
                                                  tags$div( 
                                                    div(align = "left",
-                                                       h6("Avoided miles by a passenger vehicle")
+                                                       h5("Avoided miles by a passenger vehicle")
                                                    )
                                                  ),
                                                  tags$ul(align = "left",
-                                                         tags$li(h6("Carbon dioxide emissions per gallon of gasoline was calculated by assuming that all the carbon in the gasoline is converted to CO2 (IPCC 2006).")),
-                                                         tags$li(h6("Then, it was divided by the average fuel economy (mpg) of vehicles to determine carbon dioxide emitted per mile traveled by a typical passenger vehicle. 
+                                                         tags$li(h5("Carbon dioxide emissions per gallon of gasoline was calculated by assuming that all the carbon in the gasoline is converted to CO2 [6].")),
+                                                         tags$li(h5("Then, it was divided by the average fuel economy (mpg) of vehicles to determine carbon dioxide emitted per mile traveled by a typical passenger vehicle. [10]
 ")),
-                                                         tags$li(h6("Then, it was divided by the ratio of carbon dioxide emissions to total vehicle greenhouse gas emissions to account for other greenhouse gases, methane and nitrous oxide."))
+                                                         tags$li(h5("Then, it was divided by the ratio of carbon dioxide emissions to total vehicle greenhouse gas emissions to account for other greenhouse gases, methane and nitrous oxide."))
                                                  ),
                                                  tags$div( 
                                                    div(align = "left",
-                                                       h6("Minutes of walking, biking and skating")
+                                                       h5("Minutes of walking, biking and skating")
                                                    )
                                                  ),
                                                  tags$ul(align = "left",
-                                                         tags$li(h6("Average walking speed was taken as 3.1 mph")),
-                                                         tags$li(h6("Average biking speed is taken as 12 mph ")),
-                                                         tags$li(h6("Average skating speed is taken as 9 mph"))
+                                                         tags$li(h5("Average walking speed was taken as 3.1 mph")),
+                                                         tags$li(h5("Average biking speed is taken as 12 mph ")),
+                                                         tags$li(h5("Average skating speed is taken as 9 mph"))
                                                  ),
                                                  tags$div( 
                                                    div(align = "left",
-                                                       h6("Switching from Incandescent Lamps to LED
+                                                       h5("Switching from Incandescent Lamps to LED
 ")
                                                    )
                                                  ),
                                                  tags$ul(align = "left",
-                                                         tags$li(h6("Annual energy savings was multiplied by the national weighted average carbon dioxide marginal emission rate for delivered electricity. 
+                                                         tags$li(h5("Annual energy savings was multiplied by the national weighted average carbon dioxide marginal emission rate for delivered electricity. 
 ")),
-                                                         tags$li(h6("The national weighted average carbon dioxide marginal emission rate accounts for losses during transmission and distribution (EPA 2019)."))
+                                                         tags$li(h5("The national weighted average carbon dioxide marginal emission rate accounts for losses during transmission and distribution [8]."))
                                                          
                                                  ),
                                                  tags$div( 
                                                    div(align = "left",
-                                                       h6("Planting trees")
+                                                       h5("Planting trees")
                                                    )
                                                  ),
                                                  tags$ul(align = "left",
                                                         
                                          
-                                                         tags$li(h6("The main assumption is that the trees will be grown for 10 years.
+                                                         tags$li(h5("The main assumption is that the trees will be grown for 10 years.
  "))
                                                         
                                                  )
@@ -392,8 +392,8 @@ The total greenhouse gas emission is also shown under the graph."))
                                ),
                              tags$ul(align = "left",
                                      tags$li(h4("The greenhouse gas emission dataset for the ingredients is normalized from two sources. The chicken, beef, pork data comes from the Food and Agriculture Organization of the United Nations [3], and the rest comes from a study published in Science in 2018 [4].")),
-                                     tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [5, 6, 7, 8, 9].")),
-                                     tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [10]"))
+                                     tags$li(h4("The offset data is taken from EPA’s Greenhouse Gas Equivalencies Calculator [5, 6, 7, 8, 9, 10].")),
+                                     tags$li(h4("The restaurant location data is compiled from a Kaggle.com dataset named “Restaurants that sell Tacos and Burritos.” [11]"))
                                      )
                              )
                          ) # Closes div panel
@@ -454,11 +454,12 @@ The total greenhouse gas emission is also shown under the graph."))
 [3] FAO STAT. (n.d.). Food and Agriculture Data. Retrieved March 11, 2020, from http://www.fao.org/faostat/en/#home<br><br>
 [4] Poore, J., & Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987–992. doi: 10.1126/science.aaq0216<br><br>
 [5] Greenhouse Gases Equivalencies Calculator - Calculations and References. (2019, October 25). Retrieved February 5, 2020, from https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-reference<br><br>
-[6] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.<br><br>
-[7] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)<br><br>
-[8] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)<br><br>
-[9] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)<br><br> 
-[10]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos</h4>"
+[6] IPCC (2006). 2006 IPCC Guidelines for National Greenhouse Gas Inventories. Volume 2 (Energy). Intergovernmental Panel on Climate Change, Geneva, Switzerland. <br><br>
+[7] McPherson, E. G.; van D. N. S.; Peper, P. J. (2016). Urban tree database and allometric equations. Gen. Tech. Rep. PSW-GTR-253. Albany, CA: U.S. Department of Agriculture, Forest Service, Pacific Southwest Research Station. 86 p.<br><br>
+[8] U.S. DOE (1998). Method for Calculating Carbon Sequestration by Trees in Urban and Suburban Settings. Voluntary Reporting of Greenhouse Gases, U.S. Department of Energy, Energy Information Administration (16 pp, 111K, About PDF)<br><br>
+[9] EPA (2019). Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990-2017. Chapter 3 (Energy), Tables 3-13, 3-14, and 3-15. Environmental Protection Agency, Washington, D.C. EPA #430-R-19-001 (PDF) (113 pp, 3 MB About PDF)<br><br>
+[10] FHWA (2019). Highway Statistics 2017. Office of Highway Policy Information, Federal Highway Administration. Table VM-1. (1 pp, 12 KB About PDF)<br><br> 
+[11]”Just tacos and burritos”, compiled for Kaggle.com by Datafiniti. Retrieved February 5, 2020 from https://www.kaggle.com/datafiniti/restaurants-burritos-and-tacos</h4>"
                        )
            )
   )
