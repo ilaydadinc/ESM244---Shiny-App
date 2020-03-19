@@ -275,13 +275,13 @@ The total greenhouse gas emission is also shown under the graph."))
                                              div(class="panel-body",  
                                                  tags$div( 
                                                    div(align = "left",
-                                                       h5("The calculations were made based on EPA's methodology and the detailed information can be found in the link below.")
+                                                       h6("The calculations were made based on EPA's methodology and the detailed information can be found in the link below.")
                                                    )
                                                  ),
                                                  tags$a(h6("EPA GHG Equivalency Calculator"),href="https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references"),
                                                  tags$div( 
                                                    div(align = "left",
-                                                       h5("Here is a summary of the methodology:")
+                                                       h6("Here is a summary of the methodology:")
                                                    )
                                                  ),
                                                  tags$div( 
