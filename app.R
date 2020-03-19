@@ -21,7 +21,9 @@ library(kableExtra)
 library(extrafont)
 library(paletteer)
 library(rsconnect)
-
+library(packrat)
+library(PKI)
+library(oompaBase)
 
 
 #Create 'ui' = "User Interface"

@@ -1,0 +1,13 @@
+name: shiny-demo
+title: shiny-demo
+username:
+account: ilaydadinc
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1968550
+bundleId: 2899974
+url: https://ilaydadinc.shinyapps.io/shiny-demo/
+when: 1584658569.53829
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: burr_icon.svg|meat.csv|offset mechanisms.csv|README.md|tab2_plot.Rmd|tacos_burritos.csv|veggies.csv|wrangling_drafts.Rmd|www
