@@ -5,9 +5,9 @@ account: ilaydadinc
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1966571
-bundleId: 2899148
+bundleId: 2899318
 url: https://ilaydadinc.shinyapps.io/ESM244---Shiny-App/
-when: 1584645238.90912
+when: 1584648190.35179
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: tab2_plot.Rmd
