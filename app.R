@@ -19,11 +19,11 @@ library(leaflet)
 library(shinyWidgets)
 library(kableExtra)
 library(extrafont)
-library(paletteer)
+#library(paletteer)
 library(rsconnect)
 library(packrat)
 library(PKI)
-library(oompaBase)
+
 
 
 #Create 'ui' = "User Interface"
