@@ -1,0 +1,13 @@
+name: Guilt-Free-Burritos
+title: Guilt-Free-Burritos
+username:
+account: ilaydadinc
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1969521
+bundleId: 2900702
+url: https://ilaydadinc.shinyapps.io/Guilt-Free-Burritos/
+when: 1584678196.50563
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: tab2_plot.Rmd|wrangling_drafts.Rmd

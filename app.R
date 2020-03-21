@@ -602,7 +602,8 @@ server <- function(session, input, output){
       theme(axis.text.x = element_text(color = "grey20", size = 15),
             axis.title.x = element_text(color = "grey20", size = 16),
             axis.title.y = element_text(color = "grey20", size = 16))+
-      scale_fill_paletteer_d("calecopal::figmtn")
+      scale_fill_brewer(palette = "Set3")
+      #scale_fill_paletteer_d("calecopal::figmtn")
      
   })
   
