@@ -38,7 +38,7 @@ ui <- navbarPage(
               style = "font-size:40px",
               align="center"
               ),
-           p("The word 'burrito' means 'little donkey', in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:20px",align="center"
+           p("The word 'burrito' means 'little donkey' in Spanish. The name burrito is assumed to derive from the tendency for burritos to contain a lot of different things, similar to how donkeys can carry a lot.",  style = "font-size:20px",align="center"
              ),
            img(src="image.jpg", height="100%",width="100%",style = 'position: absolute; opacity: 0.2;'
                ),
